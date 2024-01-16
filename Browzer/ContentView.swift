@@ -6,15 +6,19 @@ import SwiftData
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var items: [Item]
+    @StateObject private var viewModel = BrowserViewModel()
 
     var body: some View {
         NavigationSplitView {
             List {
-                ForEach(items) { item in
+                ForEach(viewModel.tabs, id: \.id) { tab in
                     NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
+                        WebView(webView: tab.webView)
+                            .onAppear {
+                                tab.loadURL()
+                            }
                     } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+                        Text(tab.title)
                     }
                 }
                 .onDelete(perform: deleteItems)
