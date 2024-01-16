@@ -46,7 +46,6 @@
 		A85C8AF92B4ACB4A005FF6FC = {
 			isa = PBXGroup;
 			children = (
-				A84FB05D2B56FA8600942F22 /* BrowserViewModel.swift */,
 				A85C8B042B4ACB4A005FF6FC /* Browzer */,
 				A85C8B032B4ACB4A005FF6FC /* Products */,
 			);
@@ -63,6 +62,7 @@
 		A85C8B042B4ACB4A005FF6FC /* Browzer */ = {
 			isa = PBXGroup;
 			children = (
+				A84FB05D2B56FA8600942F22 /* BrowserViewModel.swift */,
 				A85C8B052B4ACB4A005FF6FC /* BrowzerApp.swift */,
 				A85C8B072B4ACB4A005FF6FC /* ContentView.swift */,
 				A85C8B092B4ACB4A005FF6FC /* Item.swift */,

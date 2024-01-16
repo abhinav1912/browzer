@@ -9,6 +9,17 @@ struct ContentView: View {
     @StateObject private var viewModel = BrowserViewModel()
 
     var body: some View {
+        GeometryReader { proxy in
+            navigationSplitView
+                .sheet(isPresented: $viewModel.displayNewTabInputOverlay) {
+                    urlInputView
+                        .frame(width: proxy.size.width/2, height: 40)
+                        .padding(8)
+                }
+        }
+    }
+
+    var navigationSplitView: some View {
         NavigationSplitView {
             List {
                 ForEach(viewModel.tabs, id: \.id) { tab in
@@ -27,13 +38,8 @@ struct ContentView: View {
             .navigationSplitViewColumnWidth(min: 180, ideal: 200)
 #endif
             .toolbar {
-#if os(iOS)
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-#endif
                 ToolbarItem {
-                    Button(action: addItem) {
+                    Button(action: displayNewTabInputOverlay) {
                         Label("Add Item", systemImage: "plus")
                     }
                 }
@@ -43,11 +49,15 @@ struct ContentView: View {
         }
     }
 
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
+    var urlInputView: some View {
+        TextField("Enter the URL", text: $viewModel.inputUrl)
+            .focusable(false)
+            .frame(maxHeight: .infinity)
+            .background(.clear)
+    }
+
+    private func displayNewTabInputOverlay() {
+        viewModel.displayNewTabInputOverlay = true
     }
 
     private func deleteItems(offsets: IndexSet) {
