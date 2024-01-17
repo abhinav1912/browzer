@@ -16,6 +16,7 @@
 		A85C8B102B4ACB4C005FF6FC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A85C8B0F2B4ACB4C005FF6FC /* Preview Assets.xcassets */; };
 		A8720B342B4D801500C65FB8 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8720B332B4D801500C65FB8 /* Types.swift */; };
 		A8720B362B4D973B00C65FB8 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8720B352B4D973B00C65FB8 /* WebView.swift */; };
+		A8DCE1942B57D9E400D0B401 /* NSTextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DCE1932B57D9E400D0B401 /* NSTextFieldExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		A85C8B0F2B4ACB4C005FF6FC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A8720B332B4D801500C65FB8 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		A8720B352B4D973B00C65FB8 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		A8DCE1932B57D9E400D0B401 /* NSTextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTextFieldExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		A85C8B042B4ACB4A005FF6FC /* Browzer */ = {
 			isa = PBXGroup;
 			children = (
+				A8DCE1922B57D9B200D0B401 /* UIExtensions */,
 				A84FB05D2B56FA8600942F22 /* BrowserViewModel.swift */,
 				A85C8B052B4ACB4A005FF6FC /* BrowzerApp.swift */,
 				A85C8B072B4ACB4A005FF6FC /* ContentView.swift */,
@@ -82,6 +85,14 @@
 				A85C8B0F2B4ACB4C005FF6FC /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A8DCE1922B57D9B200D0B401 /* UIExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				A8DCE1932B57D9E400D0B401 /* NSTextFieldExtension.swift */,
+			);
+			path = UIExtensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,6 +169,7 @@
 				A8720B342B4D801500C65FB8 /* Types.swift in Sources */,
 				A85C8B0A2B4ACB4A005FF6FC /* Item.swift in Sources */,
 				A8720B362B4D973B00C65FB8 /* WebView.swift in Sources */,
+				A8DCE1942B57D9E400D0B401 /* NSTextFieldExtension.swift in Sources */,
 				A85C8B062B4ACB4A005FF6FC /* BrowzerApp.swift in Sources */,
 				A84162E12B4C304A00424395 /* BrowserTab.swift in Sources */,
 				A84FB05E2B56FA8600942F22 /* BrowserViewModel.swift in Sources */,

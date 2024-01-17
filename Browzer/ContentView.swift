@@ -52,7 +52,6 @@ struct ContentView: View {
     var urlInputView: some View {
         TextField("Enter the URL", text: $viewModel.inputUrl)
             .textContentType(.URL)
-            .focusable(false)
             .frame(maxHeight: .infinity)
             .background(.clear)
             .onSubmit {
