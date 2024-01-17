@@ -5,6 +5,7 @@ import Foundation
 class BrowserViewModel: ObservableObject {
     @Published var tabs = [BrowserTab]()
     @Published var displayNewTabInputOverlay = false
+    @Published var selectedTab: BrowserTab?
 
     var inputUrl = ""
 
@@ -16,5 +17,6 @@ class BrowserViewModel: ObservableObject {
         let newTab = BrowserTab(urlString: newUrl)
         inputUrl = ""
         tabs.append(newTab)
+        selectedTab = newTab
     }
 }

@@ -3,7 +3,7 @@
 import Foundation
 import WebKit
 
-struct BrowserTab {
+struct BrowserTab: Hashable, Identifiable {
     var title: String
     let id: String
     var url: String

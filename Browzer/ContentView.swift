@@ -21,18 +21,10 @@ struct ContentView: View {
 
     var navigationSplitView: some View {
         NavigationSplitView {
-            List {
-                ForEach(viewModel.tabs, id: \.id) { tab in
-                    NavigationLink {
-                        WebView(webView: tab.webView)
-                            .onAppear {
-                                tab.loadURL()
-                            }
-                    } label: {
-                        Text(tab.title)
-                    }
+            List(viewModel.tabs, selection: $viewModel.selectedTab) { tab in 
+                NavigationLink(value: tab) {
+                    Text(tab.title)
                 }
-                .onDelete(perform: deleteItems)
             }
 #if os(macOS)
             .navigationSplitViewColumnWidth(min: 180, ideal: 200)
@@ -45,7 +37,8 @@ struct ContentView: View {
                 }
             }
         } detail: {
-            EmptyView()
+            getWebViewForSelectedTab()
+                .id(viewModel.selectedTab?.id)
         }
     }
 
@@ -58,6 +51,18 @@ struct ContentView: View {
                 viewModel.openTabWithInputUrl()
                 viewModel.displayNewTabInputOverlay = false
             }
+    }
+
+    @ViewBuilder
+    private func getWebViewForSelectedTab() -> some View {
+        if let tab = viewModel.selectedTab {
+            WebView(webView: tab.webView)
+                .onAppear {
+                    tab.loadURL()
+                }
+        } else {
+            EmptyView()
+        }
     }
 
     private func displayNewTabInputOverlay() {
