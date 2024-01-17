@@ -45,7 +45,7 @@ struct ContentView: View {
                 }
             }
         } detail: {
-            Text("Select an item")
+            EmptyView()
         }
     }
 
@@ -56,6 +56,7 @@ struct ContentView: View {
             .background(.clear)
             .onSubmit {
                 viewModel.openTabWithInputUrl()
+                viewModel.displayNewTabInputOverlay = false
             }
     }
 
