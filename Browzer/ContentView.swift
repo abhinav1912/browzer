@@ -21,13 +21,7 @@ struct ContentView: View {
 
     var navigationSplitView: some View {
         NavigationSplitView {
-            Button(
-                action: displayNewTabInputOverlay,
-                label: {
-                    Label("New Tab", systemImage: "plus")
-                }
-            )
-            .frame(maxWidth: .infinity, idealHeight: 80)
+            newTabButton
             List(viewModel.tabs, selection: $viewModel.selectedTab) { tab in
                 NavigationLink(value: tab) {
                     Text(tab.title)
@@ -78,6 +72,22 @@ struct ContentView: View {
                 viewModel.openTabWithInputUrl()
                 viewModel.displayNewTabInputOverlay = false
             }
+    }
+
+    private var newTabButton: some View {
+        Button(
+            action: displayNewTabInputOverlay,
+            label: {
+                HStack {
+                    Label("New Tab", systemImage: "plus")
+                    Spacer()
+                }
+                .frame(maxWidth: .infinity)
+                .contentShape(.rect)
+            }
+        )
+        .buttonStyle(.plain)
+        .padding(8)
     }
 
     private var backButton: some View {
