@@ -21,20 +21,23 @@ struct ContentView: View {
 
     var navigationSplitView: some View {
         NavigationSplitView {
-            List(viewModel.tabs, selection: $viewModel.selectedTab) { tab in 
+            Button(
+                action: displayNewTabInputOverlay,
+                label: {
+                    Label("New Tab", systemImage: "plus")
+                }
+            )
+            .frame(maxWidth: .infinity, idealHeight: 80)
+            List(viewModel.tabs, selection: $viewModel.selectedTab) { tab in
                 NavigationLink(value: tab) {
                     Text(tab.title)
                 }
             }
 #if os(macOS)
-            .navigationSplitViewColumnWidth(min: 180, ideal: 200)
+            .navigationSplitViewColumnWidth(min: 240, ideal: 240)
 #endif
             .toolbar {
-                ToolbarItem {
-                    Button(action: displayNewTabInputOverlay) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
+                toolbarItems
             }
         } detail: {
             getWebViewForSelectedTab()
@@ -42,7 +45,31 @@ struct ContentView: View {
         }
     }
 
-    var urlInputView: some View {
+    // MARK: Private
+
+    @ToolbarContentBuilder
+    private var toolbarItems: some ToolbarContent {
+        ToolbarItem {
+            Spacer()
+        }
+        ToolbarItem {
+            backButton
+                .frame(width: .large, height: .large)
+                .padding(.small)
+        }
+        ToolbarItem {
+            forwardButton
+                .frame(width: .large, height: .large)
+                .padding(.small)
+        }
+        ToolbarItem {
+            refreshButton
+                .frame(width: .large, height: .large)
+                .padding(.small)
+        }
+    }
+
+    private var urlInputView: some View {
         TextField("Enter the URL", text: $viewModel.inputUrl)
             .textContentType(.URL)
             .frame(maxHeight: .infinity)
@@ -51,6 +78,30 @@ struct ContentView: View {
                 viewModel.openTabWithInputUrl()
                 viewModel.displayNewTabInputOverlay = false
             }
+    }
+
+    private var backButton: some View {
+        Button(
+            action: {}
+        ){
+            Image(systemName: "arrow.backward")
+        }
+    }
+
+    private var forwardButton: some View {
+        Button(
+            action: {}
+        ){
+            Image(systemName: "arrow.forward")
+        }
+    }
+
+    private var refreshButton: some View {
+        Button(
+            action: {}
+        ){
+            Image(systemName: "arrow.clockwise")
+        }
     }
 
     @ViewBuilder
