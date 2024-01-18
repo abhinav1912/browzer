@@ -17,6 +17,7 @@
 		A8720B342B4D801500C65FB8 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8720B332B4D801500C65FB8 /* Types.swift */; };
 		A8720B362B4D973B00C65FB8 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8720B352B4D973B00C65FB8 /* WebView.swift */; };
 		A8DCE1942B57D9E400D0B401 /* NSTextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DCE1932B57D9E400D0B401 /* NSTextFieldExtension.swift */; };
+		A8FF1DF62B59AA6A0028FA35 /* CGFloat+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FF1DF52B59AA6A0028FA35 /* CGFloat+Common.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		A8720B332B4D801500C65FB8 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		A8720B352B4D973B00C65FB8 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		A8DCE1932B57D9E400D0B401 /* NSTextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTextFieldExtension.swift; sourceTree = "<group>"; };
+		A8FF1DF52B59AA6A0028FA35 /* CGFloat+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Common.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				A8DCE1932B57D9E400D0B401 /* NSTextFieldExtension.swift */,
+				A8FF1DF52B59AA6A0028FA35 /* CGFloat+Common.swift */,
 			);
 			path = UIExtensions;
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 				A85C8B082B4ACB4A005FF6FC /* ContentView.swift in Sources */,
 				A8720B342B4D801500C65FB8 /* Types.swift in Sources */,
 				A85C8B0A2B4ACB4A005FF6FC /* Item.swift in Sources */,
+				A8FF1DF62B59AA6A0028FA35 /* CGFloat+Common.swift in Sources */,
 				A8720B362B4D973B00C65FB8 /* WebView.swift in Sources */,
 				A8DCE1942B57D9E400D0B401 /* NSTextFieldExtension.swift in Sources */,
 				A85C8B062B4ACB4A005FF6FC /* BrowzerApp.swift in Sources */,
