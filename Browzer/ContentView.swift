@@ -121,9 +121,6 @@ struct ContentView: View {
     private func getWebViewForSelectedTab() -> some View {
         if let tab = viewModel.selectedTab {
             WebView(webView: tab.webView)
-                .onAppear {
-                    tab.loadURL()
-                }
         } else {
             EmptyView()
         }

@@ -25,6 +25,7 @@ class BrowserViewModel: ObservableObject {
         inputUrl = ""
         tabs.append(newTab)
         selectedTab = newTab
+        newTab.loadURL()
     }
 
     func goBack() {
