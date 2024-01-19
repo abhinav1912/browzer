@@ -92,7 +92,7 @@ struct ContentView: View {
 
     private var backButton: some View {
         Button(
-            action: {}
+            action: viewModel.goBack
         ){
             Image(systemName: "arrow.backward")
         }
@@ -101,7 +101,7 @@ struct ContentView: View {
 
     private var forwardButton: some View {
         Button(
-            action: {}
+            action: viewModel.goForward
         ){
             Image(systemName: "arrow.forward")
         }
@@ -110,7 +110,7 @@ struct ContentView: View {
 
     private var refreshButton: some View {
         Button(
-            action: {}
+            action: viewModel.refreshWebView
         ){
             Image(systemName: "arrow.clockwise")
         }

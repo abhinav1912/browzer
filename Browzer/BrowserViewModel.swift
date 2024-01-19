@@ -27,6 +27,18 @@ class BrowserViewModel: ObservableObject {
         selectedTab = newTab
     }
 
+    func goBack() {
+        selectedTab?.webView.goBack()
+    }
+
+    func goForward() {
+        selectedTab?.webView.goForward()
+    }
+
+    func refreshWebView() {
+        selectedTab?.webView.reload()
+    }
+
     // MARK: Private
 
     private func updateNavigationState() {
