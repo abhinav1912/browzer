@@ -21,6 +21,7 @@ struct ContentView: View {
 
     var navigationSplitView: some View {
         NavigationSplitView {
+            addressBar
             newTabButton
             List(viewModel.tabs, selection: $viewModel.selectedTab) { tab in
                 NavigationLink(value: tab) {
@@ -65,6 +66,25 @@ struct ContentView: View {
                 .frame(width: .large, height: .large)
                 .padding(.small)
         }
+    }
+
+    @ViewBuilder
+    private var addressBar: some View {
+        Button(action: {}) {
+            HStack {
+                if let title = viewModel.selectedTab?.title {
+                    Text(title)
+                } else {
+                    Image(systemName: "magnifyingglass")
+                    Text(viewModel.selectedTab?.title ?? "Enter URL")
+                }
+                Spacer()
+            }
+            .padding(8)
+            .background(RoundedRectangle(cornerRadius: 8).fill(Color.gray))
+        }
+        .buttonStyle(.plain)
+        .padding(.horizontal, 8)
     }
 
     private var urlInputView: some View {
