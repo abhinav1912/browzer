@@ -92,6 +92,7 @@ struct ContentView: View {
         )
         .buttonStyle(.plain)
         .padding(8)
+        .keyboardShortcut("t")
     }
 
     private var backButton: some View {
