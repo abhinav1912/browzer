@@ -24,7 +24,11 @@ struct ContentView: View {
             newTabButton
             List(viewModel.tabs, selection: $viewModel.selectedTab) { tab in
                 NavigationLink(value: tab) {
-                    Text(tab.title)
+                    HStack {
+                        // TODO: Favicon https://stackoverflow.com/a/72284727/9350720
+                        Image(systemName: "globe")
+                        Text(tab.title)
+                    }
                 }
             }
 #if os(macOS)
