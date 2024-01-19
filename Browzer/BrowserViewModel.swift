@@ -5,7 +5,14 @@ import Foundation
 class BrowserViewModel: ObservableObject {
     @Published var tabs = [BrowserTab]()
     @Published var displayNewTabInputOverlay = false
-    @Published var selectedTab: BrowserTab?
+    @Published var canGoBack = false
+    @Published var canGoForward = false
+
+    @Published var selectedTab: BrowserTab? {
+        didSet {
+            updateNavigationState()
+        }
+    }
 
     var inputUrl = ""
 
@@ -18,5 +25,17 @@ class BrowserViewModel: ObservableObject {
         inputUrl = ""
         tabs.append(newTab)
         selectedTab = newTab
+    }
+
+    // MARK: Private
+
+    private func updateNavigationState() {
+        if let selectedTab {
+            canGoBack = selectedTab.webView.canGoBack
+            canGoForward = selectedTab.webView.canGoForward
+        } else {
+            canGoBack = false
+            canGoForward = false
+        }
     }
 }

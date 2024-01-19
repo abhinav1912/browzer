@@ -96,6 +96,7 @@ struct ContentView: View {
         ){
             Image(systemName: "arrow.backward")
         }
+        .disabled(!viewModel.canGoBack)
     }
 
     private var forwardButton: some View {
@@ -104,6 +105,7 @@ struct ContentView: View {
         ){
             Image(systemName: "arrow.forward")
         }
+        .disabled(!viewModel.canGoForward)
     }
 
     private var refreshButton: some View {
@@ -112,6 +114,7 @@ struct ContentView: View {
         ){
             Image(systemName: "arrow.clockwise")
         }
+        .disabled(viewModel.selectedTab == nil)
     }
 
     @ViewBuilder
