@@ -25,8 +25,10 @@ class BrowserViewModel: NSObject, ObservableObject {
         let newTab = BrowserTab(urlString: newUrl, navigationDelegate: self)
         inputUrl = ""
         tabs.append(newTab)
-        selectedTab = newTab
         newTab.loadURL()
+        Task { @MainActor [weak self] in
+            self?.selectedTab = newTab
+        }
     }
 
     func goBack() {
