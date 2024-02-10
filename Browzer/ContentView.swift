@@ -72,11 +72,11 @@ struct ContentView: View {
     private var addressBar: some View {
         Button(action: {}) {
             HStack {
-                if let title = viewModel.selectedTab?.title {
+                if let title = viewModel.selectedTab?.urlHost {
                     Text(title)
                 } else {
                     Image(systemName: "magnifyingglass")
-                    Text(viewModel.selectedTab?.title ?? "Enter URL")
+                    Text("Enter URL")
                 }
                 Spacer()
             }

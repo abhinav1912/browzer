@@ -57,16 +57,34 @@ class BrowserViewModel: NSObject, ObservableObject {
 }
 
 extension BrowserViewModel: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        guard let index = tabs.firstIndex(where: { $0.webView == webView }) else { return }
+        if let url = webView.url {
+            tabs[index].url = url.absoluteString
+            tabs[index].urlHost = url.host() ?? tabs[index].urlHost
+        }
+
+        if selectedTab?.id == tabs[index].id {
+            selectedTab = tabs[index]
+        }
+    }
+
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        guard let index = tabs.firstIndex(where: { $0.webView == webView }) else { return }
         if
             let title = webView.title,
-            !title.isEmpty,
-            let index = tabs.firstIndex(where: { $0.webView == webView })
+            !title.isEmpty
         {
             tabs[index].title = title
-            if selectedTab?.id == tabs[index].id {
-                selectedTab = tabs[index]
-            }
+        }
+
+        if let url = webView.url {
+            tabs[index].url = url.absoluteString
+            tabs[index].urlHost = url.host() ?? tabs[index].urlHost
+        }
+
+        if selectedTab?.id == tabs[index].id {
+            selectedTab = tabs[index]
         }
     }
 }

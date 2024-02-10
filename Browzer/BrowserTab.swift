@@ -7,12 +7,14 @@ struct BrowserTab {
     var title: String
     let id: String
     var url: String
+    var urlHost: String
     let webView = WKWebView(frame: .zero)
 
     init(urlString: String, navigationDelegate: WKNavigationDelegate) {
         self.id = UUID().uuidString
         self.url = urlString
         self.title = URL(string: urlString)?.host() ?? urlString
+        self.urlHost = title
         webView.navigationDelegate = navigationDelegate
     }
 
