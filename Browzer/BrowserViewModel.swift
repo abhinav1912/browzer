@@ -1,8 +1,9 @@
 //
 
 import Foundation
+import WebKit
 
-class BrowserViewModel: ObservableObject {
+class BrowserViewModel: NSObject, ObservableObject {
     @Published var tabs = [BrowserTab]()
     @Published var displayNewTabInputOverlay = false
     @Published var canGoBack = false
@@ -21,7 +22,7 @@ class BrowserViewModel: ObservableObject {
         if !newUrl.hasPrefix("https://") {
             newUrl = "https://" + newUrl
         }
-        let newTab = BrowserTab(urlString: newUrl)
+        let newTab = BrowserTab(urlString: newUrl, navigationDelegate: self)
         inputUrl = ""
         tabs.append(newTab)
         selectedTab = newTab
@@ -49,6 +50,21 @@ class BrowserViewModel: ObservableObject {
         } else {
             canGoBack = false
             canGoForward = false
+        }
+    }
+}
+
+extension BrowserViewModel: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        if
+            let title = webView.title,
+            !title.isEmpty,
+            let index = tabs.firstIndex(where: { $0.webView == webView })
+        {
+            tabs[index].title = title
+            if selectedTab?.id == tabs[index].id {
+                selectedTab = tabs[index]
+            }
         }
     }
 }
