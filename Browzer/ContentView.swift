@@ -70,7 +70,11 @@ struct ContentView: View {
 
     @ViewBuilder
     private var addressBar: some View {
-        Button(action: {}) {
+        Button(action: {
+            viewModel.inputUrl = viewModel.selectedTab?.url ?? ""
+            viewModel.isNewTab = viewModel.selectedTab == nil
+            viewModel.displayNewTabInputOverlay = true
+        }) {
             HStack {
                 if let title = viewModel.selectedTab?.urlHost {
                     Text(title)
@@ -88,13 +92,16 @@ struct ContentView: View {
     }
 
     private var urlInputView: some View {
-        TextField("Enter the URL", text: $viewModel.inputUrl)
+        TextField(viewModel.selectedTab?.url ?? "Enter the URL", text: $viewModel.inputUrl)
             .textContentType(.URL)
             .frame(maxHeight: .infinity)
             .background(.clear)
             .onSubmit {
                 viewModel.openTabWithInputUrl()
                 viewModel.displayNewTabInputOverlay = false
+            }
+            .onDisappear {
+                viewModel.inputUrl = ""
             }
     }
 

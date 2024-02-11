@@ -16,19 +16,26 @@ class BrowserViewModel: NSObject, ObservableObject {
     }
 
     var inputUrl = ""
+    var isNewTab = true
 
     func openTabWithInputUrl() {
         var newUrl = inputUrl
         if !newUrl.hasPrefix("https://") {
             newUrl = "https://" + newUrl
         }
-        let newTab = BrowserTab(urlString: newUrl, navigationDelegate: self)
-        inputUrl = ""
-        tabs.append(newTab)
-        newTab.loadURL()
-        Task { @MainActor [weak self] in
-            self?.selectedTab = newTab
+        if isNewTab {
+            let newTab = BrowserTab(urlString: newUrl, navigationDelegate: self)
+            tabs.append(newTab)
+            newTab.loadURL()
+            Task { @MainActor [weak self] in
+                self?.selectedTab = newTab
+            }
+        } else {
+            selectedTab?.url = newUrl
+            selectedTab?.loadURL()
         }
+        inputUrl = ""
+        isNewTab = true
     }
 
     func goBack() {
