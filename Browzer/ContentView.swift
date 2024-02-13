@@ -5,7 +5,6 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
     @StateObject private var viewModel = BrowserViewModel()
 
     var body: some View {
@@ -161,17 +160,9 @@ struct ContentView: View {
     private func displayNewTabInputOverlay() {
         viewModel.displayNewTabInputOverlay = true
     }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
-            }
-        }
-    }
 }
 
 #Preview {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
+        .modelContainer(for: BrowsedURL.self, inMemory: true)
 }

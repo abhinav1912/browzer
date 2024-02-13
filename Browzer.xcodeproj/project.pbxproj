@@ -13,7 +13,6 @@
 		A84FB05E2B56FA8600942F22 /* BrowserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FB05D2B56FA8600942F22 /* BrowserViewModel.swift */; };
 		A85C8B062B4ACB4A005FF6FC /* BrowzerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85C8B052B4ACB4A005FF6FC /* BrowzerApp.swift */; };
 		A85C8B082B4ACB4A005FF6FC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85C8B072B4ACB4A005FF6FC /* ContentView.swift */; };
-		A85C8B0A2B4ACB4A005FF6FC /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85C8B092B4ACB4A005FF6FC /* Item.swift */; };
 		A85C8B0C2B4ACB4C005FF6FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A85C8B0B2B4ACB4C005FF6FC /* Assets.xcassets */; };
 		A85C8B102B4ACB4C005FF6FC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A85C8B0F2B4ACB4C005FF6FC /* Preview Assets.xcassets */; };
 		A86C6A002B7A661100CCB44F /* HistoryDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86C69FF2B7A661100CCB44F /* HistoryDatabaseManager.swift */; };
@@ -31,7 +30,6 @@
 		A85C8B022B4ACB4A005FF6FC /* Browzer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Browzer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A85C8B052B4ACB4A005FF6FC /* BrowzerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowzerApp.swift; sourceTree = "<group>"; };
 		A85C8B072B4ACB4A005FF6FC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		A85C8B092B4ACB4A005FF6FC /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		A85C8B0B2B4ACB4C005FF6FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A85C8B0D2B4ACB4C005FF6FC /* Browzer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Browzer.entitlements; sourceTree = "<group>"; };
 		A85C8B0F2B4ACB4C005FF6FC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -56,7 +54,6 @@
 		A84F0ED72B7BB09500A1B831 /* DataModels */ = {
 			isa = PBXGroup;
 			children = (
-				A85C8B092B4ACB4A005FF6FC /* Item.swift */,
 				A84162E02B4C304A00424395 /* BrowserTab.swift */,
 				A84F0ED82B7BB95000A1B831 /* BrowsedURL.swift */,
 				A84F0EDA2B7BBA8800A1B831 /* URLVisit.swift */,
@@ -187,7 +184,6 @@
 			files = (
 				A85C8B082B4ACB4A005FF6FC /* ContentView.swift in Sources */,
 				A8720B342B4D801500C65FB8 /* Types.swift in Sources */,
-				A85C8B0A2B4ACB4A005FF6FC /* Item.swift in Sources */,
 				A8FF1DF62B59AA6A0028FA35 /* CGFloat+Common.swift in Sources */,
 				A8720B362B4D973B00C65FB8 /* WebView.swift in Sources */,
 				A8DCE1942B57D9E400D0B401 /* NSTextFieldExtension.swift in Sources */,
