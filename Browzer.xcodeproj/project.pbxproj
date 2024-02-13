@@ -49,6 +49,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A84F0ED72B7BB09500A1B831 /* DataModels */ = {
+			isa = PBXGroup;
+			children = (
+				A85C8B092B4ACB4A005FF6FC /* Item.swift */,
+				A84162E02B4C304A00424395 /* BrowserTab.swift */,
+			);
+			path = DataModels;
+			sourceTree = "<group>";
+		};
 		A85C8AF92B4ACB4A005FF6FC = {
 			isa = PBXGroup;
 			children = (
@@ -68,15 +77,14 @@
 		A85C8B042B4ACB4A005FF6FC /* Browzer */ = {
 			isa = PBXGroup;
 			children = (
+				A84F0ED72B7BB09500A1B831 /* DataModels */,
 				A8DCE1922B57D9B200D0B401 /* UIExtensions */,
 				A84FB05D2B56FA8600942F22 /* BrowserViewModel.swift */,
 				A85C8B052B4ACB4A005FF6FC /* BrowzerApp.swift */,
 				A85C8B072B4ACB4A005FF6FC /* ContentView.swift */,
-				A85C8B092B4ACB4A005FF6FC /* Item.swift */,
 				A85C8B0B2B4ACB4C005FF6FC /* Assets.xcassets */,
 				A85C8B0D2B4ACB4C005FF6FC /* Browzer.entitlements */,
 				A85C8B0E2B4ACB4C005FF6FC /* Preview Content */,
-				A84162E02B4C304A00424395 /* BrowserTab.swift */,
 				A8720B332B4D801500C65FB8 /* Types.swift */,
 				A8720B352B4D973B00C65FB8 /* WebView.swift */,
 				A86C69FF2B7A661100CCB44F /* HistoryDatabaseManager.swift */,
