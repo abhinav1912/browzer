@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A84162E12B4C304A00424395 /* BrowserTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84162E02B4C304A00424395 /* BrowserTab.swift */; };
+		A84F0ED92B7BB95000A1B831 /* BrowsedURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84F0ED82B7BB95000A1B831 /* BrowsedURL.swift */; };
+		A84F0EDB2B7BBA8800A1B831 /* URLVisit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84F0EDA2B7BBA8800A1B831 /* URLVisit.swift */; };
 		A84FB05E2B56FA8600942F22 /* BrowserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84FB05D2B56FA8600942F22 /* BrowserViewModel.swift */; };
 		A85C8B062B4ACB4A005FF6FC /* BrowzerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85C8B052B4ACB4A005FF6FC /* BrowzerApp.swift */; };
 		A85C8B082B4ACB4A005FF6FC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85C8B072B4ACB4A005FF6FC /* ContentView.swift */; };
@@ -23,6 +25,8 @@
 
 /* Begin PBXFileReference section */
 		A84162E02B4C304A00424395 /* BrowserTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserTab.swift; sourceTree = "<group>"; };
+		A84F0ED82B7BB95000A1B831 /* BrowsedURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowsedURL.swift; sourceTree = "<group>"; };
+		A84F0EDA2B7BBA8800A1B831 /* URLVisit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLVisit.swift; sourceTree = "<group>"; };
 		A84FB05D2B56FA8600942F22 /* BrowserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserViewModel.swift; sourceTree = "<group>"; };
 		A85C8B022B4ACB4A005FF6FC /* Browzer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Browzer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A85C8B052B4ACB4A005FF6FC /* BrowzerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowzerApp.swift; sourceTree = "<group>"; };
@@ -54,6 +58,8 @@
 			children = (
 				A85C8B092B4ACB4A005FF6FC /* Item.swift */,
 				A84162E02B4C304A00424395 /* BrowserTab.swift */,
+				A84F0ED82B7BB95000A1B831 /* BrowsedURL.swift */,
+				A84F0EDA2B7BBA8800A1B831 /* URLVisit.swift */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -186,9 +192,11 @@
 				A8720B362B4D973B00C65FB8 /* WebView.swift in Sources */,
 				A8DCE1942B57D9E400D0B401 /* NSTextFieldExtension.swift in Sources */,
 				A85C8B062B4ACB4A005FF6FC /* BrowzerApp.swift in Sources */,
+				A84F0ED92B7BB95000A1B831 /* BrowsedURL.swift in Sources */,
 				A86C6A002B7A661100CCB44F /* HistoryDatabaseManager.swift in Sources */,
 				A84162E12B4C304A00424395 /* BrowserTab.swift in Sources */,
 				A84FB05E2B56FA8600942F22 /* BrowserViewModel.swift in Sources */,
+				A84F0EDB2B7BBA8800A1B831 /* URLVisit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
