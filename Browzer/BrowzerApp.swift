@@ -5,24 +5,11 @@ import SwiftData
 
 @main
 struct BrowzerApp: App {
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            BrowsedURL.self,
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
-
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .frame(minWidth: 480, minHeight: 360)
         }
-        .modelContainer(sharedModelContainer)
+        .modelContainer(PersistenceController.shared.sharedModelContainer)
     }
 }

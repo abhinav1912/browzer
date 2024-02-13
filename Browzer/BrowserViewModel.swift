@@ -2,6 +2,7 @@
 
 import Foundation
 import WebKit
+import SwiftData
 
 class BrowserViewModel: NSObject, ObservableObject {
     @Published var tabs = [BrowserTab]()
@@ -17,6 +18,11 @@ class BrowserViewModel: NSObject, ObservableObject {
 
     var inputUrl = ""
     var isNewTab = true
+
+    @MainActor
+    var modelContext: ModelContext {
+        PersistenceController.shared.sharedModelContainer.mainContext
+    }
 
     func openTabWithInputUrl() {
         var newUrl = inputUrl

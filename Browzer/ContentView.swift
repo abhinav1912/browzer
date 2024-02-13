@@ -4,7 +4,6 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
     @StateObject private var viewModel = BrowserViewModel()
 
     var body: some View {
