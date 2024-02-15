@@ -2,7 +2,6 @@
 
 import Foundation
 import WebKit
-import SwiftData
 
 class BrowserViewModel: NSObject, ObservableObject {
     @Published var tabs = [BrowserTab]()
@@ -19,10 +18,7 @@ class BrowserViewModel: NSObject, ObservableObject {
     var inputUrl = ""
     var isNewTab = true
 
-    @MainActor
-    var modelContext: ModelContext {
-        PersistenceController.shared.sharedModelContainer.mainContext
-    }
+    let historyManager = HistoryManager.shared
 
     func openTabWithInputUrl() {
         var newUrl = inputUrl
@@ -84,16 +80,23 @@ extension BrowserViewModel: WKNavigationDelegate {
 
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         guard let index = tabs.firstIndex(where: { $0.webView == webView }) else { return }
+        let urlTitle: String
         if
             let title = webView.title,
             !title.isEmpty
         {
             tabs[index].title = title
+            urlTitle = title
+        } else {
+            urlTitle = tabs[index].urlHost
         }
 
         if let url = webView.url {
             tabs[index].url = url.absoluteString
             tabs[index].urlHost = url.host() ?? tabs[index].urlHost
+            Task {
+                await historyManager.addUrlToHistory(url.absoluteString, title: urlTitle)
+            }
         }
 
         if selectedTab?.id == tabs[index].id {
