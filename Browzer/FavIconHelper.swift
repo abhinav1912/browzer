@@ -9,7 +9,7 @@ struct FavIconHelper {
         case large = 64
     }
 
-    static func getUrlForDomain(_ domain: String, iconSize: IconSize = .small) -> String {
+    static func getUrlForDomain(_ domain: String, iconSize: IconSize = .medium) -> String {
         "https://www.google.com/s2/favicons?sz=\(iconSize.rawValue)&domain=\(domain)"
     }
 }

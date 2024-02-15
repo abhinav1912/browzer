@@ -24,8 +24,17 @@ struct ContentView: View {
             List(viewModel.tabs, selection: $viewModel.selectedTab) { tab in
                 NavigationLink(value: tab) {
                     HStack {
-                        // TODO: Favicon https://stackoverflow.com/a/72284727/9350720
-                        Image(systemName: "globe")
+                        CachedAsyncImage(
+                            url: URL(string: FavIconHelper.getUrlForDomain(tab.urlHost)),
+                            content: { image in
+                                image
+                                    .resizable()
+                                    .frame(width: 16, height: 16)
+                            },
+                            placeholder: {
+                                Image(systemName: "globe")
+                            }
+                        )
                         Text(tab.title)
                     }
                 }
