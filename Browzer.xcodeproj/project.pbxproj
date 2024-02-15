@@ -20,7 +20,6 @@
 		A85C8B102B4ACB4C005FF6FC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A85C8B0F2B4ACB4C005FF6FC /* Preview Assets.xcassets */; };
 		A86058AE2B7D029B00902E78 /* CachedAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86058AD2B7D029B00902E78 /* CachedAsyncImage.swift */; };
 		A86058B02B7D291F00902E78 /* FavIconHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86058AF2B7D291F00902E78 /* FavIconHelper.swift */; };
-		A86C6A002B7A661100CCB44F /* HistoryDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86C69FF2B7A661100CCB44F /* HistoryDatabaseManager.swift */; };
 		A8720B342B4D801500C65FB8 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8720B332B4D801500C65FB8 /* Types.swift */; };
 		A8720B362B4D973B00C65FB8 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8720B352B4D973B00C65FB8 /* WebView.swift */; };
 		A8DCE1942B57D9E400D0B401 /* NSTextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DCE1932B57D9E400D0B401 /* NSTextFieldExtension.swift */; };
@@ -43,7 +42,6 @@
 		A85C8B0F2B4ACB4C005FF6FC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A86058AD2B7D029B00902E78 /* CachedAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedAsyncImage.swift; sourceTree = "<group>"; };
 		A86058AF2B7D291F00902E78 /* FavIconHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavIconHelper.swift; sourceTree = "<group>"; };
-		A86C69FF2B7A661100CCB44F /* HistoryDatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDatabaseManager.swift; sourceTree = "<group>"; };
 		A8720B332B4D801500C65FB8 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		A8720B352B4D973B00C65FB8 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		A8DCE1932B57D9E400D0B401 /* NSTextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTextFieldExtension.swift; sourceTree = "<group>"; };
@@ -61,6 +59,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A83F3C672B7E9BD4003434A1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A86058AD2B7D029B00902E78 /* CachedAsyncImage.swift */,
+				A8720B352B4D973B00C65FB8 /* WebView.swift */,
+				A85C8B072B4ACB4A005FF6FC /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		A84F0ED72B7BB09500A1B831 /* DataModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -91,20 +99,16 @@
 			isa = PBXGroup;
 			children = (
 				A84F0ED72B7BB09500A1B831 /* DataModels */,
-				A8DCE1922B57D9B200D0B401 /* UIExtensions */,
+				A8DCE1922B57D9B200D0B401 /* Extensions */,
+				A83F3C672B7E9BD4003434A1 /* Views */,
 				A84FB05D2B56FA8600942F22 /* BrowserViewModel.swift */,
 				A85C8B052B4ACB4A005FF6FC /* BrowzerApp.swift */,
-				A85C8B072B4ACB4A005FF6FC /* ContentView.swift */,
 				A85C8B0B2B4ACB4C005FF6FC /* Assets.xcassets */,
 				A85C8B0D2B4ACB4C005FF6FC /* Browzer.entitlements */,
 				A85C8B0E2B4ACB4C005FF6FC /* Preview Content */,
 				A8720B332B4D801500C65FB8 /* Types.swift */,
-				A8720B352B4D973B00C65FB8 /* WebView.swift */,
-				A86C69FF2B7A661100CCB44F /* HistoryDatabaseManager.swift */,
 				A84F0EDC2B7BEB0800A1B831 /* PersistenceController.swift */,
-				A86058AD2B7D029B00902E78 /* CachedAsyncImage.swift */,
 				A86058AF2B7D291F00902E78 /* FavIconHelper.swift */,
-				A83F3C632B7E3F28003434A1 /* URLCache+Extension.swift */,
 				A83F3C652B7E8866003434A1 /* HistoryManager.swift */,
 			);
 			path = Browzer;
@@ -118,13 +122,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		A8DCE1922B57D9B200D0B401 /* UIExtensions */ = {
+		A8DCE1922B57D9B200D0B401 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				A83F3C632B7E3F28003434A1 /* URLCache+Extension.swift */,
 				A8DCE1932B57D9E400D0B401 /* NSTextFieldExtension.swift */,
 				A8FF1DF52B59AA6A0028FA35 /* CGFloat+Common.swift */,
 			);
-			path = UIExtensions;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,7 +213,6 @@
 				A83F3C642B7E3F28003434A1 /* URLCache+Extension.swift in Sources */,
 				A85C8B062B4ACB4A005FF6FC /* BrowzerApp.swift in Sources */,
 				A84F0ED92B7BB95000A1B831 /* BrowsedURL.swift in Sources */,
-				A86C6A002B7A661100CCB44F /* HistoryDatabaseManager.swift in Sources */,
 				A83F3C662B7E8866003434A1 /* HistoryManager.swift in Sources */,
 				A84162E12B4C304A00424395 /* BrowserTab.swift in Sources */,
 				A84FB05E2B56FA8600942F22 /* BrowserViewModel.swift in Sources */,
