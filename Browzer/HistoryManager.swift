@@ -19,8 +19,8 @@ final class HistoryManager {
                 let newRecord = BrowsedURL(url: urlString, title: title)
                 modelContext.insert(newRecord)
             } else {
-                let visit = URLVisit(visitedTime: Date.now)
-                existingRecords[0].visits.append(visit)
+                let browsedUrl = existingRecords[0]
+                let _ = URLVisit(visitedTime: Date.now, browsedUrl: browsedUrl)
             }
         } catch {
             print("Unable to fetch history from modelContext.")
