@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A83F3C642B7E3F28003434A1 /* URLCache+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83F3C632B7E3F28003434A1 /* URLCache+Extension.swift */; };
 		A84162E12B4C304A00424395 /* BrowserTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84162E02B4C304A00424395 /* BrowserTab.swift */; };
 		A84F0ED92B7BB95000A1B831 /* BrowsedURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84F0ED82B7BB95000A1B831 /* BrowsedURL.swift */; };
 		A84F0EDB2B7BBA8800A1B831 /* URLVisit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84F0EDA2B7BBA8800A1B831 /* URLVisit.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A83F3C632B7E3F28003434A1 /* URLCache+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLCache+Extension.swift"; sourceTree = "<group>"; };
 		A84162E02B4C304A00424395 /* BrowserTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserTab.swift; sourceTree = "<group>"; };
 		A84F0ED82B7BB95000A1B831 /* BrowsedURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowsedURL.swift; sourceTree = "<group>"; };
 		A84F0EDA2B7BBA8800A1B831 /* URLVisit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLVisit.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				A84F0EDC2B7BEB0800A1B831 /* PersistenceController.swift */,
 				A86058AD2B7D029B00902E78 /* CachedAsyncImage.swift */,
 				A86058AF2B7D291F00902E78 /* FavIconHelper.swift */,
+				A83F3C632B7E3F28003434A1 /* URLCache+Extension.swift */,
 			);
 			path = Browzer;
 			sourceTree = "<group>";
@@ -199,6 +202,7 @@
 				A84F0EDD2B7BEB0800A1B831 /* PersistenceController.swift in Sources */,
 				A8720B362B4D973B00C65FB8 /* WebView.swift in Sources */,
 				A8DCE1942B57D9E400D0B401 /* NSTextFieldExtension.swift in Sources */,
+				A83F3C642B7E3F28003434A1 /* URLCache+Extension.swift in Sources */,
 				A85C8B062B4ACB4A005FF6FC /* BrowzerApp.swift in Sources */,
 				A84F0ED92B7BB95000A1B831 /* BrowsedURL.swift in Sources */,
 				A86C6A002B7A661100CCB44F /* HistoryDatabaseManager.swift in Sources */,

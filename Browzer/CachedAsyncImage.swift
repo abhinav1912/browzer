@@ -17,7 +17,7 @@ struct CachedAsyncImage<Content>: View where Content: View {
 
     init<ImageView: View, PlaceholderView: View>(
         url: URL?,
-        urlCache: URLCache = .shared,
+        urlCache: URLCache = .images,
         @ViewBuilder content: @escaping (Image) -> ImageView,
         @ViewBuilder placeholder: @escaping () -> PlaceholderView)
     where Content == _ConditionalContent<ImageView, PlaceholderView>
@@ -31,7 +31,7 @@ struct CachedAsyncImage<Content>: View where Content: View {
         }
     }
 
-    init(url: URL?, urlCache: URLCache = .shared, @ViewBuilder content: @escaping (AsyncImagePhase) -> Content) {
+    init(url: URL?, urlCache: URLCache = .images, @ViewBuilder content: @escaping (AsyncImagePhase) -> Content) {
         var urlRequest: URLRequest?
         if let url {
             urlRequest = URLRequest(url: url)
