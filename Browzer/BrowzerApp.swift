@@ -5,11 +5,14 @@ import SwiftData
 
 @main
 struct BrowzerApp: App {
+    var browserViewModel = BrowserViewModel()
+
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .frame(minWidth: 480, minHeight: 360)
         }
+        .environmentObject(browserViewModel)
         .modelContainer(PersistenceController.shared.sharedModelContainer)
         .commands {
             CommandGroup(after: .newItem) {

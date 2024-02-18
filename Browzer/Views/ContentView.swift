@@ -4,7 +4,7 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-    @StateObject private var viewModel = BrowserViewModel()
+    @EnvironmentObject private var viewModel: BrowserViewModel
 
     var body: some View {
         GeometryReader { proxy in
