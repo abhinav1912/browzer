@@ -14,8 +14,4 @@ final class BrowsedURL {
         self.title = title
         self.visits = visits
     }
-
-    var visitCount: Int {
-        visits.count
-    }
 }

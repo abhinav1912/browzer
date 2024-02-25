@@ -15,13 +15,15 @@ final class HistoryManager {
             let existingRecords = try modelContext.fetch(FetchDescriptor<BrowsedURL>(predicate: #Predicate<BrowsedURL> {
                 $0.url == urlString
             }))
+            let browsedUrl: BrowsedURL
             if existingRecords.isEmpty {
-                let newRecord = BrowsedURL(url: urlString, title: title)
-                modelContext.insert(newRecord)
+                browsedUrl = BrowsedURL(url: urlString, title: title)
+                modelContext.insert(browsedUrl)
             } else {
-                let browsedUrl = existingRecords[0]
-                let _ = URLVisit(visitedTime: Date.now, browsedUrl: browsedUrl)
+                browsedUrl = existingRecords[0]
             }
+            let visit = URLVisit(visitedTime: Date.now, browsedUrl: browsedUrl)
+            modelContext.insert(visit)
         } catch {
             print("Unable to fetch history from modelContext.")
         }
