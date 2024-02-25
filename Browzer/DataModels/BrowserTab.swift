@@ -8,19 +8,19 @@ struct BrowserTab {
     let id: String
     var url: String
     var urlHost: String
-    let webView = WKWebView(frame: .zero)
+    let webView: WKWebView?
 
-    init(urlString: String, navigationDelegate: WKNavigationDelegate) {
+    init(urlString: String, webView: WKWebView?) {
         self.id = UUID().uuidString
         self.url = urlString
         self.title = URL(string: urlString)?.host() ?? urlString
         self.urlHost = title
-        webView.navigationDelegate = navigationDelegate
+        self.webView = webView
     }
 
     func loadURL() {
         if let url = URL(string: url) {
-            webView.load(URLRequest(url: url))
+            webView?.load(URLRequest(url: url))
         }
     }
 }

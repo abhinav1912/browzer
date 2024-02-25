@@ -26,7 +26,9 @@ class BrowserViewModel: NSObject, ObservableObject {
             newUrl = "https://" + newUrl
         }
         if isNewTab {
-            let newTab = BrowserTab(urlString: newUrl, navigationDelegate: self)
+            let webView = WKWebView(frame: .zero)
+            webView.navigationDelegate = self
+            let newTab = BrowserTab(urlString: newUrl, webView: webView)
             tabs.append(newTab)
             newTab.loadURL()
             Task { @MainActor [weak self] in
@@ -41,23 +43,23 @@ class BrowserViewModel: NSObject, ObservableObject {
     }
 
     func goBack() {
-        selectedTab?.webView.goBack()
+        selectedTab?.webView?.goBack()
     }
 
     func goForward() {
-        selectedTab?.webView.goForward()
+        selectedTab?.webView?.goForward()
     }
 
     func refreshWebView() {
-        selectedTab?.webView.reload()
+        selectedTab?.webView?.reload()
     }
 
     // MARK: Private
 
     private func updateNavigationState() {
-        if let selectedTab {
-            canGoBack = selectedTab.webView.canGoBack
-            canGoForward = selectedTab.webView.canGoForward
+        if let webView = selectedTab?.webView {
+            canGoBack = webView.canGoBack
+            canGoForward = webView.canGoForward
         } else {
             canGoBack = false
             canGoForward = false

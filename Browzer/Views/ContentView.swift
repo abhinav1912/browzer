@@ -158,8 +158,8 @@ struct ContentView: View {
 
     @ViewBuilder
     private func getWebViewForSelectedTab() -> some View {
-        if let tab = viewModel.selectedTab {
-            WebView(webView: tab.webView)
+        if let webView = viewModel.selectedTab?.webView {
+            WebView(webView: webView)
         } else {
             EmptyView()
         }
