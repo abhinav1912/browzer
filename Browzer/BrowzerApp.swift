@@ -17,7 +17,8 @@ struct BrowzerApp: App {
         .commands {
             CommandGroup(after: .newItem) {
                 Button("History") {
-                    // TODO: add history view
+                    browserViewModel.inputUrl = "browzer://history"
+                    browserViewModel.openTabWithInputUrl()
                 }.keyboardShortcut("y")
             }
         }

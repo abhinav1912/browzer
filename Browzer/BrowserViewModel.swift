@@ -22,13 +22,23 @@ class BrowserViewModel: NSObject, ObservableObject {
 
     func openTabWithInputUrl() {
         var newUrl = inputUrl
-        if !newUrl.hasPrefix("https://") {
+        let isHistoryTab = newUrl == "browzer://history"
+        if
+            !isHistoryTab,
+            !newUrl.hasPrefix("https://")
+        {
             newUrl = "https://" + newUrl
         }
+
         if isNewTab {
-            let webView = WKWebView(frame: .zero)
-            webView.navigationDelegate = self
-            let newTab = BrowserTab(urlString: newUrl, webView: webView)
+            let newTab: BrowserTab
+            if isHistoryTab {
+                newTab = BrowserTab(urlString: newUrl, title: "History", webView: nil)
+            } else {
+                let webView = WKWebView(frame: .zero)
+                webView.navigationDelegate = self
+                newTab = BrowserTab(urlString: newUrl, webView: webView)
+            }
             tabs.append(newTab)
             newTab.loadURL()
             Task { @MainActor [weak self] in

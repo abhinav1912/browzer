@@ -158,10 +158,14 @@ struct ContentView: View {
 
     @ViewBuilder
     private func getWebViewForSelectedTab() -> some View {
-        if let webView = viewModel.selectedTab?.webView {
-            WebView(webView: webView)
+        if let selectedTab = viewModel.selectedTab {
+            if let webView = selectedTab.webView {
+                WebView(webView: webView)
+            } else {
+                HistoryView()
+            }
         } else {
-            HistoryView()
+            EmptyView()
         }
     }
 
