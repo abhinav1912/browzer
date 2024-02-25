@@ -161,7 +161,7 @@ struct ContentView: View {
         if let webView = viewModel.selectedTab?.webView {
             WebView(webView: webView)
         } else {
-            EmptyView()
+            HistoryView()
         }
     }
 

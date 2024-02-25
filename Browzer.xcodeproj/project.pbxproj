@@ -22,6 +22,7 @@
 		A86058B02B7D291F00902E78 /* FavIconHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86058AF2B7D291F00902E78 /* FavIconHelper.swift */; };
 		A8720B342B4D801500C65FB8 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8720B332B4D801500C65FB8 /* Types.swift */; };
 		A8720B362B4D973B00C65FB8 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8720B352B4D973B00C65FB8 /* WebView.swift */; };
+		A8A5D27E2B8B4B6A002FEB66 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A5D27D2B8B4B6A002FEB66 /* HistoryView.swift */; };
 		A8DCE1942B57D9E400D0B401 /* NSTextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DCE1932B57D9E400D0B401 /* NSTextFieldExtension.swift */; };
 		A8FF1DF62B59AA6A0028FA35 /* CGFloat+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FF1DF52B59AA6A0028FA35 /* CGFloat+Common.swift */; };
 /* End PBXBuildFile section */
@@ -44,6 +45,7 @@
 		A86058AF2B7D291F00902E78 /* FavIconHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavIconHelper.swift; sourceTree = "<group>"; };
 		A8720B332B4D801500C65FB8 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		A8720B352B4D973B00C65FB8 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		A8A5D27D2B8B4B6A002FEB66 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		A8DCE1932B57D9E400D0B401 /* NSTextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTextFieldExtension.swift; sourceTree = "<group>"; };
 		A8FF1DF52B59AA6A0028FA35 /* CGFloat+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Common.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,6 +67,7 @@
 				A86058AD2B7D029B00902E78 /* CachedAsyncImage.swift */,
 				A8720B352B4D973B00C65FB8 /* WebView.swift */,
 				A85C8B072B4ACB4A005FF6FC /* ContentView.swift */,
+				A8A5D27D2B8B4B6A002FEB66 /* HistoryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 				A8720B362B4D973B00C65FB8 /* WebView.swift in Sources */,
 				A8DCE1942B57D9E400D0B401 /* NSTextFieldExtension.swift in Sources */,
 				A83F3C642B7E3F28003434A1 /* URLCache+Extension.swift in Sources */,
+				A8A5D27E2B8B4B6A002FEB66 /* HistoryView.swift in Sources */,
 				A85C8B062B4ACB4A005FF6FC /* BrowzerApp.swift in Sources */,
 				A84F0ED92B7BB95000A1B831 /* BrowsedURL.swift in Sources */,
 				A83F3C662B7E8866003434A1 /* HistoryManager.swift in Sources */,
