@@ -11,19 +11,25 @@ struct HistoryView: View {
         if urlVisits.isEmpty {
             Text("No history yet!")
         } else {
-            ForEach(groupedHistory) { item in
-                Section(item.date) {
-                    ForEach(item.visits) { urlVisit in
-                        if let url = urlVisit.browsedUrl {
-                            HStack {
-                                Text(urlVisit.visitedTime.ISO8601Format())
-                                Text(url.title)
-                                Text(url.url)
+            List {
+                ForEach(groupedHistory) { item in
+                    Section(header: Text(item.date)) {
+                        ForEach(item.visits) { urlVisit in
+                            if let url = urlVisit.browsedUrl {
+                                HStack {
+                                    Text(urlVisit.visitedTime.ISO8601Format())
+                                    Text(url.title)
+                                    Text(url.url)
+                                }
                             }
                         }
                     }
+                    .headerProminence(.increased)
                 }
             }
+            #if os(iOS)
+            .listStyle(.insetGrouped)
+            #endif
         }
     }
 
