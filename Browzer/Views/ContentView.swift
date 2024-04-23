@@ -21,24 +21,7 @@ struct ContentView: View {
         NavigationSplitView {
             addressBar
             newTabButton
-            List(viewModel.tabs, selection: $viewModel.selectedTab) { tab in
-                NavigationLink(value: tab) {
-                    HStack {
-                        CachedAsyncImage(
-                            url: URL(string: FavIconHelper.getUrlForDomain(tab.urlHost)),
-                            content: { image in
-                                image
-                                    .resizable()
-                                    .frame(width: 16, height: 16)
-                            },
-                            placeholder: {
-                                Image(systemName: "globe")
-                            }
-                        )
-                        Text(tab.title)
-                    }
-                }
-            }
+            tabList
 #if os(macOS)
             .navigationSplitViewColumnWidth(min: 240, ideal: 240)
 #endif
@@ -154,6 +137,27 @@ struct ContentView: View {
             Image(systemName: "arrow.clockwise")
         }
         .disabled(viewModel.selectedTab == nil)
+    }
+
+    private var tabList: some View {
+        List(viewModel.tabs, selection: $viewModel.selectedTab) { tab in
+            NavigationLink(value: tab) {
+                HStack {
+                    CachedAsyncImage(
+                        url: URL(string: FavIconHelper.getUrlForDomain(tab.urlHost)),
+                        content: { image in
+                            image
+                                .resizable()
+                                .frame(width: 16, height: 16)
+                        },
+                        placeholder: {
+                            Image(systemName: "globe")
+                        }
+                    )
+                    Text(tab.title)
+                }
+            }
+        }
     }
 
     @ViewBuilder
