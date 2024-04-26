@@ -9,7 +9,8 @@ struct PersistenceController {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             BrowsedURL.self,
-            URLVisit.self
+            URLVisit.self,
+            FavouritesTab.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
