@@ -4,7 +4,7 @@ import SwiftData
 import SwiftUI
 
 @Model
-struct FavouritesTab {
+final class FavouritesTab {
     var url: String
     var faviconPath: String
 
