@@ -7,9 +7,15 @@ struct BrowserTab {
     var title: String
     let id: String
     var url: String
-    var urlHost: String
+    var urlHost: String {
+        didSet {
+            if urlHost != oldValue {
+                faviconPath = FavIconHelper.getUrlForDomain(urlHost)
+            }
+        }
+    }
     let webView: WKWebView?
-    let faviconPath: String
+    var faviconPath: String
 
     init(urlString: String, title: String, webView: WKWebView?, faviconPath: String? = nil) {
         self.id = UUID().uuidString
