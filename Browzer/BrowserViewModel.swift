@@ -5,6 +5,7 @@ import WebKit
 
 class BrowserViewModel: NSObject, ObservableObject {
     @Published var tabs = [BrowserTab]()
+    @Published var favouriteTabs = [BrowserTab]()
     @Published var displayNewTabInputOverlay = false
     @Published var canGoBack = false
     @Published var canGoForward = false
@@ -35,9 +36,7 @@ class BrowserViewModel: NSObject, ObservableObject {
             if isHistoryTab {
                 newTab = BrowserTab(urlString: newUrl, title: "History", webView: nil)
             } else {
-                let webView = WKWebView(frame: .zero)
-                webView.navigationDelegate = self
-                newTab = BrowserTab(urlString: newUrl, webView: webView)
+                newTab = BrowserTab(urlString: newUrl, webView: getNewWebView())
             }
             tabs.append(newTab)
             newTab.loadURL()
@@ -64,6 +63,28 @@ class BrowserViewModel: NSObject, ObservableObject {
         selectedTab?.webView?.reload()
     }
 
+    func initialiseFavouriteTabs(_ favouriteTabs: [FavouritesTab]) {
+        self.favouriteTabs = favouriteTabs.map {
+            BrowserTab(favouritesTab: $0, webView: getNewWebView())
+        }
+    }
+
+    func addFavouriteTab(_ tabId: String) {
+        if let tabIndex = tabs.firstIndex(where: { $0.id == tabId }) {
+            let tab = tabs[tabIndex]
+            tabs.remove(at: tabIndex)
+            favouriteTabs.append(tab)
+        }
+    }
+
+    func removeFavouriteTab(_ tabId: String) {
+        if let tabIndex = favouriteTabs.firstIndex(where: { $0.id == tabId }) {
+            let tab = favouriteTabs[tabIndex]
+            favouriteTabs.remove(at: tabIndex)
+            tabs.append(tab)
+        }
+    }
+
     // MARK: Private
 
     private func updateNavigationState() {
@@ -75,23 +96,14 @@ class BrowserViewModel: NSObject, ObservableObject {
             canGoForward = false
         }
     }
-}
 
-extension BrowserViewModel: WKNavigationDelegate {
-    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        guard let index = tabs.firstIndex(where: { $0.webView == webView }) else { return }
-        if let url = webView.url {
-            tabs[index].url = url.absoluteString
-            tabs[index].urlHost = url.host() ?? tabs[index].urlHost
-        }
-
-        if selectedTab?.id == tabs[index].id {
-            selectedTab = tabs[index]
-        }
+    private func getNewWebView() -> WKWebView {
+        let webView = WKWebView(frame: .zero)
+        webView.navigationDelegate = self
+        return webView
     }
 
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        guard let index = tabs.firstIndex(where: { $0.webView == webView }) else { return }
+    private func updateTab(at index: Int, webView: WKWebView, tabs: inout [BrowserTab]) {
         let urlTitle: String
         if
             let title = webView.title,
@@ -113,6 +125,24 @@ extension BrowserViewModel: WKNavigationDelegate {
 
         if selectedTab?.id == tabs[index].id {
             selectedTab = tabs[index]
+        }
+    }
+}
+
+extension BrowserViewModel: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        if let index = tabs.firstIndex(where: { $0.webView == webView }) {
+            updateTab(at: index, webView: webView, tabs: &tabs)
+        } else if let index = favouriteTabs.firstIndex(where: { $0.webView == webView }) {
+            updateTab(at: index, webView: webView, tabs: &favouriteTabs)
+        }
+    }
+
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        if let index = tabs.firstIndex(where: { $0.webView == webView }) {
+            updateTab(at: index, webView: webView, tabs: &tabs)
+        } else if let index = favouriteTabs.firstIndex(where: { $0.webView == webView }) {
+            updateTab(at: index, webView: webView, tabs: &favouriteTabs)
         }
     }
 }
