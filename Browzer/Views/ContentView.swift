@@ -50,14 +50,19 @@ struct ContentView: View {
                     content: { image in
                         image
                             .resizable()
-                            .frame(width: 16, height: 16)
+                            .frame(width: 20, height: 20)
                     },
                     placeholder: {
                         Image(systemName: "globe")
                     }
                 )
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(.red)
+                .clipShape(RoundedRectangle(cornerRadius: .medium))
             }
         }
+        .frame(height: 48)
+        .padding(.horizontal, .medium)
     }
 
     // MARK: Private
@@ -187,7 +192,7 @@ struct ContentView: View {
                 if favouriteTabs.count < 4 {
                     Button(
                         action: {
-                            let newTab = FavouritesTab(url: tab.url, faviconPath: tab.faviconPath)
+                            let newTab = FavouritesTab(url: tab.url, faviconPath: FavIconHelper.getUrlForDomain(tab.urlHost, iconSize: .medium))
                             modelContext.insert(newTab)
                             withAnimation {
                                 viewModel.addFavouriteTab(tab.id)
