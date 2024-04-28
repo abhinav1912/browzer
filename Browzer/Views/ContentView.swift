@@ -4,7 +4,9 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
+    @Environment(\.modelContext) var modelContext
     @EnvironmentObject private var viewModel: BrowserViewModel
+    @Query private var favouriteTabs: [FavouritesTab]
 
     var body: some View {
         GeometryReader { proxy in
@@ -15,11 +17,17 @@ struct ContentView: View {
                         .padding(8)
                 }
         }
+        .onAppear {
+            viewModel.initialiseFavouriteTabs(favouriteTabs)
+        }
     }
 
     var navigationSplitView: some View {
         NavigationSplitView {
             addressBar
+            if !favouriteTabs.isEmpty {
+                favouriteTabsView
+            }
             newTabButton
             tabList
 #if os(macOS)
@@ -31,6 +39,24 @@ struct ContentView: View {
         } detail: {
             getWebViewForSelectedTab()
                 .id(viewModel.selectedTab?.id)
+        }
+    }
+
+    var favouriteTabsView: some View {
+        HStack {
+            ForEach(favouriteTabs) { tab in
+                CachedAsyncImage(
+                    url: URL(string: tab.faviconPath),
+                    content: { image in
+                        image
+                            .resizable()
+                            .frame(width: 16, height: 16)
+                    },
+                    placeholder: {
+                        Image(systemName: "globe")
+                    }
+                )
+            }
         }
     }
 
@@ -144,7 +170,7 @@ struct ContentView: View {
             NavigationLink(value: tab) {
                 HStack {
                     CachedAsyncImage(
-                        url: URL(string: FavIconHelper.getUrlForDomain(tab.urlHost)),
+                        url: URL(string: tab.faviconPath),
                         content: { image in
                             image
                                 .resizable()
@@ -155,6 +181,22 @@ struct ContentView: View {
                         }
                     )
                     Text(tab.title)
+                }
+            }
+            .contextMenu {
+                if favouriteTabs.count < 4 {
+                    Button(
+                        action: {
+                            let newTab = FavouritesTab(url: tab.url, faviconPath: tab.faviconPath)
+                            modelContext.insert(newTab)
+                            withAnimation {
+                                viewModel.addFavouriteTab(tab.id)
+                            }
+                        },
+                        label: {
+                            Text("Add to Favourites")
+                        }
+                    )
                 }
             }
         }
