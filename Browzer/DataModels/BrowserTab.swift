@@ -26,13 +26,13 @@ struct BrowserTab {
         self.faviconPath = faviconPath ?? FavIconHelper.getUrlForDomain(urlHost)
     }
 
-    init(urlString: String, webView: WKWebView?) {
+    init(urlString: String, webView: WKWebView?, faviconPath: String? = nil) {
         let title = URL(string: urlString)?.host() ?? urlString
         self.init(urlString: urlString, title: title, webView: webView)
     }
 
     init(favouritesTab: FavouritesTab, webView: WKWebView?) {
-        self.init(urlString: favouritesTab.url, webView: webView)
+        self.init(urlString: favouritesTab.url, webView: webView, faviconPath: favouritesTab.faviconPath)
     }
 
     func loadURL() {
