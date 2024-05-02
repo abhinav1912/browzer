@@ -59,6 +59,21 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(.red)
                 .clipShape(RoundedRectangle(cornerRadius: .medium))
+                .contextMenu {
+                    Button(
+                        action: {
+                            withAnimation {
+                                if let index = favouriteTabs.firstIndex(where: { $0 == tab }) {
+                                    viewModel.removeFavouriteTab(at: index)
+                                }
+                                modelContext.delete(tab)
+                            }
+                        },
+                        label: {
+                            Text("Remove from Favourites")
+                        }
+                    )
+                }
             }
         }
         .frame(height: 48)

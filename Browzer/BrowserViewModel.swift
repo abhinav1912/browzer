@@ -77,12 +77,13 @@ class BrowserViewModel: NSObject, ObservableObject {
         }
     }
 
-    func removeFavouriteTab(_ tabId: String) {
-        if let tabIndex = favouriteTabs.firstIndex(where: { $0.id == tabId }) {
-            let tab = favouriteTabs[tabIndex]
-            favouriteTabs.remove(at: tabIndex)
-            tabs.append(tab)
-        }
+    func removeFavouriteTab(at index: Int) {
+        let tab = favouriteTabs.remove(at: index)
+        tabs.append(tab)
+    }
+
+    func getIndexForFavouriteTab(withIdentifier id: String) -> Int? {
+        favouriteTabs.firstIndex(where: { $0.id == id })
     }
 
     // MARK: Private
