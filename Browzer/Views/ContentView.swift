@@ -8,6 +8,8 @@ struct ContentView: View {
     @EnvironmentObject private var viewModel: BrowserViewModel
     @Query private var favouriteTabs: [FavouritesTab]
 
+    @State private var hoveringOverTabId: String?
+
     var body: some View {
         GeometryReader { proxy in
             navigationSplitView
@@ -188,20 +190,11 @@ struct ContentView: View {
     private var tabList: some View {
         List(viewModel.tabs, selection: $viewModel.selectedTab) { tab in
             NavigationLink(value: tab) {
-                HStack {
-                    CachedAsyncImage(
-                        url: URL(string: tab.faviconPath),
-                        content: { image in
-                            image
-                                .resizable()
-                                .frame(width: 16, height: 16)
-                        },
-                        placeholder: {
-                            Image(systemName: "globe")
-                        }
-                    )
-                    Text(tab.title)
-                }
+                TabListView(tab: tab, isHovering: tab.id == hoveringOverTabId)
+                    .frame(maxWidth: .infinity)
+            }
+            .onHover { isHovering in
+                hoveringOverTabId = isHovering ? tab.id : nil
             }
             .contextMenu {
                 if favouriteTabs.count < 4 {
