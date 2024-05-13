@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A829EB842BF25FE700BD53DF /* Mobile_ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A829EB832BF25FE700BD53DF /* Mobile_ContentView.swift */; };
 		A83F3C642B7E3F28003434A1 /* URLCache+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83F3C632B7E3F28003434A1 /* URLCache+Extension.swift */; };
 		A83F3C662B7E8866003434A1 /* HistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83F3C652B7E8866003434A1 /* HistoryManager.swift */; };
 		A84162E12B4C304A00424395 /* BrowserTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84162E02B4C304A00424395 /* BrowserTab.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A829EB832BF25FE700BD53DF /* Mobile_ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mobile_ContentView.swift; sourceTree = "<group>"; };
 		A83F3C632B7E3F28003434A1 /* URLCache+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLCache+Extension.swift"; sourceTree = "<group>"; };
 		A83F3C652B7E8866003434A1 /* HistoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryManager.swift; sourceTree = "<group>"; };
 		A84162E02B4C304A00424395 /* BrowserTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserTab.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				A85C8B072B4ACB4A005FF6FC /* macOS_ContentView.swift */,
 				A8A5D27D2B8B4B6A002FEB66 /* HistoryView.swift */,
 				A8765F262BEE10D800F89D89 /* TabListView.swift */,
+				A829EB832BF25FE700BD53DF /* Mobile_ContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 				A86058B02B7D291F00902E78 /* FavIconHelper.swift in Sources */,
 				A85C8B082B4ACB4A005FF6FC /* macOS_ContentView.swift in Sources */,
 				A86058AE2B7D029B00902E78 /* CachedAsyncImage.swift in Sources */,
+				A829EB842BF25FE700BD53DF /* Mobile_ContentView.swift in Sources */,
 				A8720B342B4D801500C65FB8 /* Types.swift in Sources */,
 				A8FF1DF62B59AA6A0028FA35 /* CGFloat+Common.swift in Sources */,
 				A84F0EDD2B7BEB0800A1B831 /* PersistenceController.swift in Sources */,
