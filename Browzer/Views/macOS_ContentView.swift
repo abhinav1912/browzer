@@ -3,7 +3,7 @@
 import SwiftUI
 import SwiftData
 
-struct ContentView: View {
+struct macOS_ContentView: View {
     @Environment(\.modelContext) var modelContext
     @EnvironmentObject private var viewModel: BrowserViewModel
     @Query private var favouriteTabs: [FavouritesTab]
@@ -234,6 +234,6 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    macOS_ContentView()
         .modelContainer(for: BrowsedURL.self, inMemory: true)
 }

@@ -9,7 +9,7 @@ struct BrowzerApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            macOS_ContentView()
                 .frame(minWidth: 480, minHeight: 360)
         }
         .environmentObject(browserViewModel)
