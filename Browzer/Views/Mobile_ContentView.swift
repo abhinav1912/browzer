@@ -21,20 +21,39 @@ struct Mobile_ContentView: View {
 
     var bottomBar: some View {
         VStack {
-            TextField(text: $url) {
-                Text("Enter the url")
-            }
-            .textFieldStyle(.roundedBorder)
+            addressBar
             .padding(.horizontal, 16)
             .padding(.vertical, 8)
             HStack {
                 ForEach(bottomBarItems) { item in
                     bottomBarButton(for: item)
                         .frame(minWidth: 0, maxWidth: .infinity)
-//                        .frame(width: 40, height: 40)
                 }
             }
         }
+    }
+
+    var addressBar: some View {
+        HStack {
+            Spacer()
+            Text(url)
+                .foregroundStyle(.white)
+            Spacer()
+            Button(
+                action: {},
+                label: {
+                    Image(systemName: "arrow.clockwise")
+                        .renderingMode(.template)
+                        .foregroundStyle(.white)
+                        .imageScale(.medium)
+                }
+            )
+            .buttonStyle(.plain)
+        }
+        .padding(.vertical, .medium)
+        .padding(.horizontal, .large)
+        .background(.black)
+        .clipShape(RoundedRectangle(cornerRadius: 8))
     }
 
     var bottomBarItems: [BottomBarItem] {
