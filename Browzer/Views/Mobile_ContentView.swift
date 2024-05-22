@@ -3,7 +3,7 @@
 import SwiftUI
 
 struct Mobile_ContentView: View {
-    @State var url = "google.com" // temporary, will be replaced with VM
+    @EnvironmentObject private var viewModel: BrowserViewModel
 
     var body: some View {
         content
@@ -36,7 +36,7 @@ struct Mobile_ContentView: View {
     var addressBar: some View {
         HStack {
             Spacer()
-            Text(url)
+            Text(viewModel.selectedTab?.url ?? "")
                 .foregroundStyle(.white)
             Spacer()
             Button(
