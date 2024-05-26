@@ -63,13 +63,29 @@ struct iOS_ContentView: View {
     }
 
     var bottomBarItems: [BottomBarItem] {
-        [
-            BottomBarItem(imageName: "chevron.left", action: {}),
-            BottomBarItem(imageName: "chevron.right", action: {}),
-            BottomBarItem(imageName: "square.and.arrow.up", action: {}),
-            BottomBarItem(imageName: "book", action: {}),
-            BottomBarItem(imageName: "square.on.square", action: {})
-        ]
+        if showTabList {
+            return [
+                BottomBarItem(imageName: "plus", action: {}),
+                BottomBarItem(imageName: "list.bullet", action: {}),
+                BottomBarItem(imageName: "square.on.square", action: {
+                    withAnimation {
+                        showTabList = false
+                    }
+                })
+            ]
+        } else {
+            return [
+                BottomBarItem(imageName: "chevron.left", action: {}),
+                BottomBarItem(imageName: "chevron.right", action: {}),
+                BottomBarItem(imageName: "square.and.arrow.up", action: {}),
+                BottomBarItem(imageName: "book", action: {}),
+                BottomBarItem(imageName: "square.on.square", action: {
+                    withAnimation {
+                        showTabList = true
+                    }
+                })
+            ]
+        }
     }
 
     func bottomBarButton(for item: BottomBarItem) -> some View {
