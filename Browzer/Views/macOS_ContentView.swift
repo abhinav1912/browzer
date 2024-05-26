@@ -5,7 +5,7 @@ import SwiftData
 
 struct macOS_ContentView: View {
     @Environment(\.modelContext) var modelContext
-    @EnvironmentObject private var viewModel: BrowserViewModel
+    @Bindable var viewModel: BrowserViewModel
     @Query private var favouriteTabs: [FavouritesTab]
 
     @State private var hoveringOverTabId: String?
@@ -231,9 +231,4 @@ struct macOS_ContentView: View {
     private func displayNewTabInputOverlay() {
         viewModel.displayNewTabInputOverlay = true
     }
-}
-
-#Preview {
-    macOS_ContentView()
-        .modelContainer(for: BrowsedURL.self, inMemory: true)
 }

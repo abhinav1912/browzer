@@ -3,7 +3,7 @@
 import SwiftUI
 
 struct Mobile_ContentView: View {
-    @EnvironmentObject private var viewModel: BrowserViewModel
+    @Bindable var viewModel: BrowserViewModel
 
     var body: some View {
         content
@@ -92,5 +92,5 @@ struct Mobile_ContentView: View {
 }
 
 #Preview {
-    Mobile_ContentView()
+    Mobile_ContentView(viewModel: BrowserViewModel())
 }

@@ -3,21 +3,21 @@
 import Foundation
 import WebKit
 
-class BrowserViewModel: NSObject, ObservableObject {
-    @Published var tabs = [BrowserTab]()
-    @Published var favouriteTabs = [BrowserTab]()
-    @Published var displayNewTabInputOverlay = false
-    @Published var canGoBack = false
-    @Published var canGoForward = false
+@Observable class BrowserViewModel: NSObject {
+    var tabs = [BrowserTab]()
+    var favouriteTabs = [BrowserTab]()
+    var displayNewTabInputOverlay = false
+    var canGoBack = false
+    var canGoForward = false
 
-    @Published var selectedTab: BrowserTab? {
+    var selectedTab: BrowserTab? {
         didSet {
             updateNavigationState()
         }
     }
 
-    var inputUrl = ""
-    var isNewTab = true
+    @ObservationIgnored var inputUrl = ""
+    @ObservationIgnored var isNewTab = true
 
     let historyManager = HistoryManager.shared
 

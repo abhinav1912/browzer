@@ -10,13 +10,12 @@ struct BrowzerApp: App {
     var body: some Scene {
         WindowGroup {
             #if os(macOS)
-            macOS_ContentView()
+            macOS_ContentView(viewModel: browserViewModel)
                 .frame(minWidth: 480, minHeight: 360)
             #else
-            Mobile_ContentView()
+            Mobile_ContentView(viewModel: browserViewModel)
             #endif
         }
-        .environmentObject(browserViewModel)
         .modelContainer(PersistenceController.shared.sharedModelContainer)
         .commands {
             CommandGroup(after: .newItem) {
