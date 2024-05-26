@@ -13,7 +13,7 @@ struct BrowzerApp: App {
             macOS_ContentView(viewModel: browserViewModel)
                 .frame(minWidth: 480, minHeight: 360)
             #else
-            Mobile_ContentView(viewModel: browserViewModel)
+            iOS_ContentView(viewModel: browserViewModel)
             #endif
         }
         .modelContainer(PersistenceController.shared.sharedModelContainer)

@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-struct Mobile_ContentView: View {
+struct SelectedTabView: View {
     @Bindable var viewModel: BrowserViewModel
 
     var body: some View {
@@ -92,5 +92,5 @@ struct Mobile_ContentView: View {
 }
 
 #Preview {
-    Mobile_ContentView(viewModel: BrowserViewModel())
+    iOS_ContentView(viewModel: BrowserViewModel())
 }
