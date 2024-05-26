@@ -24,7 +24,7 @@
 		A86058B02B7D291F00902E78 /* FavIconHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86058AF2B7D291F00902E78 /* FavIconHelper.swift */; };
 		A8720B342B4D801500C65FB8 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8720B332B4D801500C65FB8 /* Types.swift */; };
 		A8720B362B4D973B00C65FB8 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8720B352B4D973B00C65FB8 /* WebView.swift */; };
-		A8765F272BEE10D800F89D89 /* TabListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8765F262BEE10D800F89D89 /* TabListView.swift */; };
+		A8765F272BEE10D800F89D89 /* macOS_TabListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8765F262BEE10D800F89D89 /* macOS_TabListView.swift */; };
 		A8A5D27E2B8B4B6A002FEB66 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A5D27D2B8B4B6A002FEB66 /* HistoryView.swift */; };
 		A8DCE1942B57D9E400D0B401 /* NSTextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DCE1932B57D9E400D0B401 /* NSTextFieldExtension.swift */; };
 		A8FF1DF62B59AA6A0028FA35 /* CGFloat+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FF1DF52B59AA6A0028FA35 /* CGFloat+Common.swift */; };
@@ -50,7 +50,7 @@
 		A86058AF2B7D291F00902E78 /* FavIconHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavIconHelper.swift; sourceTree = "<group>"; };
 		A8720B332B4D801500C65FB8 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		A8720B352B4D973B00C65FB8 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
-		A8765F262BEE10D800F89D89 /* TabListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabListView.swift; sourceTree = "<group>"; };
+		A8765F262BEE10D800F89D89 /* macOS_TabListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macOS_TabListView.swift; sourceTree = "<group>"; };
 		A8A5D27D2B8B4B6A002FEB66 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		A8DCE1932B57D9E400D0B401 /* NSTextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTextFieldExtension.swift; sourceTree = "<group>"; };
 		A8FF1DF52B59AA6A0028FA35 /* CGFloat+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Common.swift"; sourceTree = "<group>"; };
@@ -70,12 +70,11 @@
 		A83F3C672B7E9BD4003434A1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A8E355A92C0337B9001E6F29 /* iOS */,
+				A8E355A82C0337B0001E6F29 /* macOS */,
 				A86058AD2B7D029B00902E78 /* CachedAsyncImage.swift */,
 				A8720B352B4D973B00C65FB8 /* WebView.swift */,
-				A85C8B072B4ACB4A005FF6FC /* macOS_ContentView.swift */,
 				A8A5D27D2B8B4B6A002FEB66 /* HistoryView.swift */,
-				A8765F262BEE10D800F89D89 /* TabListView.swift */,
-				A829EB832BF25FE700BD53DF /* Mobile_ContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -142,6 +141,23 @@
 				A8FF1DF52B59AA6A0028FA35 /* CGFloat+Common.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A8E355A82C0337B0001E6F29 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				A85C8B072B4ACB4A005FF6FC /* macOS_ContentView.swift */,
+				A8765F262BEE10D800F89D89 /* macOS_TabListView.swift */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		A8E355A92C0337B9001E6F29 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				A829EB832BF25FE700BD53DF /* Mobile_ContentView.swift */,
+			);
+			path = iOS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,7 +237,7 @@
 				A8720B342B4D801500C65FB8 /* Types.swift in Sources */,
 				A8FF1DF62B59AA6A0028FA35 /* CGFloat+Common.swift in Sources */,
 				A84F0EDD2B7BEB0800A1B831 /* PersistenceController.swift in Sources */,
-				A8765F272BEE10D800F89D89 /* TabListView.swift in Sources */,
+				A8765F272BEE10D800F89D89 /* macOS_TabListView.swift in Sources */,
 				A8720B362B4D973B00C65FB8 /* WebView.swift in Sources */,
 				A8DCE1942B57D9E400D0B401 /* NSTextFieldExtension.swift in Sources */,
 				A83F3C642B7E3F28003434A1 /* URLCache+Extension.swift in Sources */,

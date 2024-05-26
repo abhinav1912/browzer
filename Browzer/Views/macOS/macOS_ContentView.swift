@@ -190,7 +190,7 @@ struct macOS_ContentView: View {
     private var tabList: some View {
         List(viewModel.tabs, selection: $viewModel.selectedTab) { tab in
             NavigationLink(value: tab) {
-                TabListView(tab: tab, isHovering: tab.id == hoveringOverTabId)
+                macOS_TabListView(tab: tab, isHovering: tab.id == hoveringOverTabId)
                     .frame(maxWidth: .infinity)
             }
             .onHover { isHovering in

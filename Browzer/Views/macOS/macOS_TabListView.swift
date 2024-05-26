@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-struct TabListView: View {
+struct macOS_TabListView: View {
     let tab: BrowserTab
     let isHovering: Bool
 
