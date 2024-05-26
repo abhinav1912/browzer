@@ -67,7 +67,7 @@ struct iOS_ContentView: View {
             return [
                 BottomBarItem(imageName: "plus", action: {}),
                 BottomBarItem(imageName: "list.bullet", action: {}),
-                BottomBarItem(imageName: "square.on.square", action: {
+                BottomBarItem(str: "Done", action: {
                     withAnimation {
                         showTabList = false
                     }
@@ -92,10 +92,16 @@ struct iOS_ContentView: View {
         Button(
             action: item.action,
             label: {
-                Image(systemName: item.imageName)
-                    .renderingMode(.template)
-                    .foregroundStyle(.white)
-                    .imageScale(.large)
+                switch item.content {
+                case .text(let str):
+                    Text(str)
+                        .foregroundStyle(.white)
+                case .image(let name):
+                    Image(systemName: name)
+                        .renderingMode(.template)
+                        .foregroundStyle(.white)
+                        .imageScale(.large)
+                }
             }
         )
         .buttonStyle(.plain)
@@ -104,11 +110,31 @@ struct iOS_ContentView: View {
     // MARK: - Types
 
     struct BottomBarItem: Identifiable {
-        var imageName: String
+        var content: Content
         var action: () -> Void
 
+        init(imageName: String, action: @escaping () -> Void) {
+            self.content = .image(name: imageName)
+            self.action = action
+        }
+
+        init(str: String, action: @escaping () -> Void) {
+            self.content = .text(str: str)
+            self.action = action
+        }
+
         var id: String {
-            imageName
+            switch content {
+            case .text(let str):
+                return str
+            case .image(let name):
+                return name
+            }
+        }
+
+        enum Content {
+            case text(str: String)
+            case image(name: String)
         }
     }
 }
