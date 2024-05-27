@@ -34,9 +34,9 @@ import WebKit
         if isNewTab {
             let newTab: BrowserTab
             if isHistoryTab {
-                newTab = BrowserTab(urlString: newUrl, title: "History", webView: nil)
+                newTab = BrowserTab(urlString: newUrl, title: "History", contentType: .history)
             } else {
-                newTab = BrowserTab(urlString: newUrl, webView: getNewWebView())
+                newTab = BrowserTab(urlString: newUrl, contentType: .webView(getNewWebView()))
             }
             tabs.append(newTab)
             newTab.loadURL()
@@ -65,7 +65,7 @@ import WebKit
 
     func initialiseFavouriteTabs(_ favouriteTabs: [FavouritesTab]) {
         self.favouriteTabs = favouriteTabs.map {
-            BrowserTab(favouritesTab: $0, webView: getNewWebView())
+            BrowserTab(favouritesTab: $0, contentType: .webView(getNewWebView()))
         }
     }
 

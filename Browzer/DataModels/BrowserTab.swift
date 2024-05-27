@@ -4,9 +4,33 @@ import Foundation
 import WebKit
 
 struct BrowserTab {
-    var title: String
     let id: String
+    let contentType: ContentType
+
+    var title: String
     var url: String
+    var faviconPath: String
+
+    // MARK: - Initializers
+
+    init(urlString: String, title: String, contentType: ContentType, faviconPath: String? = nil) {
+        self.id = UUID().uuidString
+        self.url = urlString
+        self.title = title
+        self.urlHost = title
+        self.contentType = contentType
+        self.faviconPath = faviconPath ?? FavIconHelper.getUrlForDomain(urlHost)
+    }
+
+    init(urlString: String, contentType: ContentType, faviconPath: String? = nil) {
+        let title = URL(string: urlString)?.host() ?? urlString
+        self.init(urlString: urlString, title: title, contentType: contentType)
+    }
+
+    init(favouritesTab: FavouritesTab, contentType: ContentType) {
+        self.init(urlString: favouritesTab.url, contentType: contentType, faviconPath: favouritesTab.faviconPath)
+    }
+
     var urlHost: String {
         didSet {
             if urlHost != oldValue {
@@ -14,25 +38,13 @@ struct BrowserTab {
             }
         }
     }
-    let webView: WKWebView?
-    var faviconPath: String
-
-    init(urlString: String, title: String, webView: WKWebView?, faviconPath: String? = nil) {
-        self.id = UUID().uuidString
-        self.url = urlString
-        self.title = title
-        self.urlHost = title
-        self.webView = webView
-        self.faviconPath = faviconPath ?? FavIconHelper.getUrlForDomain(urlHost)
-    }
-
-    init(urlString: String, webView: WKWebView?, faviconPath: String? = nil) {
-        let title = URL(string: urlString)?.host() ?? urlString
-        self.init(urlString: urlString, title: title, webView: webView)
-    }
-
-    init(favouritesTab: FavouritesTab, webView: WKWebView?) {
-        self.init(urlString: favouritesTab.url, webView: webView, faviconPath: favouritesTab.faviconPath)
+    var webView: WKWebView? {
+        switch contentType {
+        case .webView(let webView):
+            return webView
+        default:
+            return nil
+        }
     }
 
     func loadURL() {
@@ -40,7 +52,17 @@ struct BrowserTab {
             webView?.load(URLRequest(url: url))
         }
     }
+
+    // MARK: - Types
+
+    enum ContentType {
+        case history
+        case startPage
+        case webView(WKWebView)
+    }
 }
+
+// MARK: - Extensions
 
 extension BrowserTab: Identifiable {
     static func == (lhs: BrowserTab, rhs: BrowserTab) -> Bool {
