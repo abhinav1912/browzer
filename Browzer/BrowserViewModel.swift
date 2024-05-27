@@ -17,7 +17,8 @@ import WebKit
     }
 
     @ObservationIgnored var inputUrl = ""
-    @ObservationIgnored var isNewTab = true
+    /// since URL load could be for an existing tab, or for opening a new tab
+    @ObservationIgnored var isOpeningNewTab = true
 
     let historyManager = HistoryManager.shared
 
@@ -31,7 +32,7 @@ import WebKit
             newUrl = "https://" + newUrl
         }
 
-        if isNewTab {
+        if isOpeningNewTab {
             let newTab: BrowserTab
             if isHistoryTab {
                 newTab = BrowserTab(urlString: newUrl, title: "History", contentType: .history)
@@ -48,7 +49,7 @@ import WebKit
             selectedTab?.loadURL()
         }
         inputUrl = ""
-        isNewTab = true
+        isOpeningNewTab = true
     }
 
     func goBack() {

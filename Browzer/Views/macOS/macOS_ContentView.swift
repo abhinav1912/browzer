@@ -110,7 +110,7 @@ struct macOS_ContentView: View {
     private var addressBar: some View {
         Button(action: {
             viewModel.inputUrl = viewModel.selectedTab?.url ?? ""
-            viewModel.isNewTab = viewModel.selectedTab == nil
+            viewModel.isOpeningNewTab = viewModel.selectedTab == nil
             viewModel.displayNewTabInputOverlay = true
         }) {
             HStack {
