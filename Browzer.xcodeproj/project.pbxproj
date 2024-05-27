@@ -29,6 +29,7 @@
 		A8DCE1942B57D9E400D0B401 /* NSTextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DCE1932B57D9E400D0B401 /* NSTextFieldExtension.swift */; };
 		A8E355AB2C033AB1001E6F29 /* SelectedTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E355AA2C033AB1001E6F29 /* SelectedTabView.swift */; };
 		A8E355AD2C034F2C001E6F29 /* iOS_TabListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E355AC2C034F2C001E6F29 /* iOS_TabListView.swift */; };
+		A8E355AF2C0508DD001E6F29 /* StartPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E355AE2C0508DD001E6F29 /* StartPage.swift */; };
 		A8FF1DF62B59AA6A0028FA35 /* CGFloat+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FF1DF52B59AA6A0028FA35 /* CGFloat+Common.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		A8DCE1932B57D9E400D0B401 /* NSTextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTextFieldExtension.swift; sourceTree = "<group>"; };
 		A8E355AA2C033AB1001E6F29 /* SelectedTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTabView.swift; sourceTree = "<group>"; };
 		A8E355AC2C034F2C001E6F29 /* iOS_TabListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_TabListView.swift; sourceTree = "<group>"; };
+		A8E355AE2C0508DD001E6F29 /* StartPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPage.swift; sourceTree = "<group>"; };
 		A8FF1DF52B59AA6A0028FA35 /* CGFloat+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Common.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -162,6 +164,7 @@
 				A829EB832BF25FE700BD53DF /* iOS_ContentView.swift */,
 				A8E355AA2C033AB1001E6F29 /* SelectedTabView.swift */,
 				A8E355AC2C034F2C001E6F29 /* iOS_TabListView.swift */,
+				A8E355AE2C0508DD001E6F29 /* StartPage.swift */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				A8FF1DF62B59AA6A0028FA35 /* CGFloat+Common.swift in Sources */,
 				A84F0EDD2B7BEB0800A1B831 /* PersistenceController.swift in Sources */,
 				A8E355AB2C033AB1001E6F29 /* SelectedTabView.swift in Sources */,
+				A8E355AF2C0508DD001E6F29 /* StartPage.swift in Sources */,
 				A8765F272BEE10D800F89D89 /* macOS_TabListView.swift in Sources */,
 				A8720B362B4D973B00C65FB8 /* WebView.swift in Sources */,
 				A8DCE1942B57D9E400D0B401 /* NSTextFieldExtension.swift in Sources */,
