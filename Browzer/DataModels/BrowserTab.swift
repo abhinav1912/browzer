@@ -5,30 +5,39 @@ import WebKit
 
 struct BrowserTab {
     let id: String
-    let contentType: ContentType
+    var contentType: ContentType
 
     var title: String
-    var url: String
     var faviconPath: String
 
     // MARK: - Initializers
 
-    init(urlString: String, title: String, contentType: ContentType, faviconPath: String? = nil) {
+    init(title: String, contentType: ContentType, faviconPath: String? = nil) {
         self.id = UUID().uuidString
-        self.url = urlString
         self.title = title
         self.urlHost = title
         self.contentType = contentType
         self.faviconPath = faviconPath ?? FavIconHelper.getUrlForDomain(urlHost)
     }
 
-    init(urlString: String, contentType: ContentType, faviconPath: String? = nil) {
-        let title = URL(string: urlString)?.host() ?? urlString
-        self.init(urlString: urlString, title: title, contentType: contentType)
+    init(contentType: ContentType, faviconPath: String? = nil) {
+        let title = contentType.getTitle()
+        self.init(title: title, contentType: contentType)
     }
 
     init(favouritesTab: FavouritesTab, contentType: ContentType) {
-        self.init(urlString: favouritesTab.url, contentType: contentType, faviconPath: favouritesTab.faviconPath)
+        self.init(contentType: contentType, faviconPath: favouritesTab.faviconPath)
+    }
+
+    var url: String? {
+        switch contentType {
+        case .webView(let url):
+            return url
+        case .history:
+            return "browzer://history"
+        default:
+            return nil
+        }
     }
 
     var urlHost: String {
@@ -38,27 +47,24 @@ struct BrowserTab {
             }
         }
     }
-    var webView: WKWebView? {
-        switch contentType {
-        case .webView(let webView):
-            return webView
-        default:
-            return nil
-        }
-    }
-
-    func loadURL() {
-        if let url = URL(string: url) {
-            webView?.load(URLRequest(url: url))
-        }
-    }
 
     // MARK: - Types
 
     enum ContentType {
         case history
         case startPage
-        case webView(WKWebView)
+        case webView(url: String)
+
+        func getTitle() -> String {
+            switch self {
+            case .history:
+                return "History"
+            case .startPage:
+                return "Start Page"
+            case .webView(let url):
+                return URL(string: url)?.host() ?? url
+            }
+        }
     }
 }
 

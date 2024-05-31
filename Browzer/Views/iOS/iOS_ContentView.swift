@@ -18,7 +18,7 @@ struct iOS_ContentView: View {
 
     @ViewBuilder
     var content: some View {
-        if showTabList {
+        if showTabList || viewModel.tabs.isEmpty {
             iOS_TabListView()
         } else {
             SelectedTabView(viewModel: viewModel)

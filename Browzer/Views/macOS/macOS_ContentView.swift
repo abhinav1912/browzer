@@ -200,7 +200,14 @@ struct macOS_ContentView: View {
                 if favouriteTabs.count < 4 {
                     Button(
                         action: {
-                            let newTab = FavouritesTab(url: tab.url, faviconPath: FavIconHelper.getUrlForDomain(tab.urlHost, iconSize: .medium))
+                            guard let url = tab.url else { return }
+                            let newTab = FavouritesTab(
+                                url: url,
+                                faviconPath: FavIconHelper.getUrlForDomain(
+                                    tab.urlHost,
+                                    iconSize: .medium
+                                )
+                            )
                             modelContext.insert(newTab)
                             withAnimation {
                                 viewModel.addFavouriteTab(tab.id)
@@ -218,13 +225,16 @@ struct macOS_ContentView: View {
     @ViewBuilder
     private func getWebViewForSelectedTab() -> some View {
         if let selectedTab = viewModel.selectedTab {
-            if let webView = selectedTab.webView {
-                WebView(webView: webView)
-            } else {
+            switch selectedTab.contentType {
+            case .history:
                 HistoryView()
+            case .startPage:
+                StartPage()
+            case .webView(let url):
+                if let webview = viewModel.currentWebview {
+                    WebView(webView: webview)
+                }
             }
-        } else {
-            EmptyView()
         }
     }
 

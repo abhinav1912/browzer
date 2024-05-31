@@ -4,8 +4,19 @@ import Foundation
 import WebKit
 
 class WebviewManager {
-    // TODO: Complete implementation
+    var cache = [String: WKWebView]()
+
     func getWebview(forId id: String) -> WKWebView? {
-        return nil
+        cache[id]
+    }
+
+    func getTabIdForWebview(_ webview: WKWebView) -> String? {
+        cache.first(where: { $0.value == webview })?.key
+    }
+
+    func createWebview(forTab id: String) -> WKWebView {
+        let webview = WKWebView(frame: .zero)
+        cache[id] = webview
+        return webview
     }
 }

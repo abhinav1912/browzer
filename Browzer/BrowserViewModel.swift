@@ -21,6 +21,14 @@ import WebKit
     @ObservationIgnored var isOpeningNewTab = true
 
     let historyManager = HistoryManager.shared
+    let webviewManager = WebviewManager()
+
+    var currentWebview: WKWebView? {
+        guard let selectedTabId = selectedTab?.id else {
+            return nil
+        }
+        return webviewManager.getWebview(forId: selectedTabId)
+    }
 
     func openTabWithInputUrl() {
         var newUrl = inputUrl
@@ -35,38 +43,39 @@ import WebKit
         if isOpeningNewTab {
             let newTab: BrowserTab
             if isHistoryTab {
-                newTab = BrowserTab(urlString: newUrl, title: "History", contentType: .history)
+                newTab = BrowserTab(contentType: .history)
             } else {
-                newTab = BrowserTab(urlString: newUrl, contentType: .webView(getNewWebView()))
+                newTab = BrowserTab(contentType: .webView(url: newUrl))
             }
+            let webview = getNewWebView(for: newTab.id)
             tabs.append(newTab)
-            newTab.loadURL()
+            load(url: newUrl, forView: webview)
             Task { @MainActor [weak self] in
                 self?.selectedTab = newTab
             }
         } else {
-            selectedTab?.url = newUrl
-            selectedTab?.loadURL()
+            selectedTab?.contentType = .webView(url: newUrl)
+            load(url: newUrl, for: selectedTab?.id ?? "")
         }
         inputUrl = ""
         isOpeningNewTab = true
     }
 
     func goBack() {
-        selectedTab?.webView?.goBack()
+        currentWebview?.goBack()
     }
 
     func goForward() {
-        selectedTab?.webView?.goForward()
+        currentWebview?.goForward()
     }
 
     func refreshWebView() {
-        selectedTab?.webView?.reload()
+        currentWebview?.reload()
     }
 
     func initialiseFavouriteTabs(_ favouriteTabs: [FavouritesTab]) {
         self.favouriteTabs = favouriteTabs.map {
-            BrowserTab(favouritesTab: $0, contentType: .webView(getNewWebView()))
+            BrowserTab(favouritesTab: $0, contentType: .webView(url: $0.url))
         }
     }
 
@@ -90,7 +99,7 @@ import WebKit
     // MARK: Private
 
     private func updateNavigationState() {
-        if let webView = selectedTab?.webView {
+        if let webView = currentWebview {
             canGoBack = webView.canGoBack
             canGoForward = webView.canGoForward
         } else {
@@ -99,8 +108,8 @@ import WebKit
         }
     }
 
-    private func getNewWebView() -> WKWebView {
-        let webView = WKWebView(frame: .zero)
+    private func getNewWebView(for tabId: String) -> WKWebView {
+        let webView = webviewManager.createWebview(forTab: tabId)
         webView.navigationDelegate = self
         return webView
     }
@@ -118,7 +127,7 @@ import WebKit
         }
 
         if let url = webView.url {
-            tabs[index].url = url.absoluteString
+            tabs[index].contentType = .webView(url: url.absoluteString)
             tabs[index].urlHost = url.host() ?? tabs[index].urlHost
             Task {
                 await historyManager.addUrlToHistory(url.absoluteString, title: urlTitle)
@@ -129,21 +138,39 @@ import WebKit
             selectedTab = tabs[index]
         }
     }
-}
 
-extension BrowserViewModel: WKNavigationDelegate {
-    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        if let index = tabs.firstIndex(where: { $0.webView == webView }) {
-            updateTab(at: index, webView: webView, tabs: &tabs)
-        } else if let index = favouriteTabs.firstIndex(where: { $0.webView == webView }) {
-            updateTab(at: index, webView: webView, tabs: &favouriteTabs)
+    private func load(url: String, for tabId: String) {
+        if let url = URL(string: url) {
+            webviewManager
+                .getWebview(forId: tabId)?
+                .load(URLRequest(url: url))
         }
     }
 
+    private func load(url: String, forView webview: WKWebView) {
+        if let url = URL(string: url) {
+            webview.load(URLRequest(url: url))
+        }
+    }
+}
+
+// MARK: - WKNavigationDelegate extension
+
+extension BrowserViewModel: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        self.update(webView)
+    }
+
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        if let index = tabs.firstIndex(where: { $0.webView == webView }) {
+        self.update(webView)
+    }
+
+    private func update(_ webView: WKWebView) {
+        guard let id = webviewManager.getTabIdForWebview(webView) else { return }
+
+        if let index = tabs.firstIndex(where: { $0.id == id }) {
             updateTab(at: index, webView: webView, tabs: &tabs)
-        } else if let index = favouriteTabs.firstIndex(where: { $0.webView == webView }) {
+        } else if let index = favouriteTabs.firstIndex(where: { $0.id == id }) {
             updateTab(at: index, webView: webView, tabs: &favouriteTabs)
         }
     }

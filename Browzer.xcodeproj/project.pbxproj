@@ -11,6 +11,7 @@
 		A83F3C642B7E3F28003434A1 /* URLCache+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83F3C632B7E3F28003434A1 /* URLCache+Extension.swift */; };
 		A83F3C662B7E8866003434A1 /* HistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83F3C652B7E8866003434A1 /* HistoryManager.swift */; };
 		A84162E12B4C304A00424395 /* BrowserTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84162E02B4C304A00424395 /* BrowserTab.swift */; };
+		A84D16692C08420500D7384C /* WebviewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84D16682C08420500D7384C /* WebviewManager.swift */; };
 		A84F0ED92B7BB95000A1B831 /* BrowsedURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84F0ED82B7BB95000A1B831 /* BrowsedURL.swift */; };
 		A84F0EDB2B7BBA8800A1B831 /* URLVisit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84F0EDA2B7BBA8800A1B831 /* URLVisit.swift */; };
 		A84F0EDD2B7BEB0800A1B831 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84F0EDC2B7BEB0800A1B831 /* PersistenceController.swift */; };
@@ -38,6 +39,7 @@
 		A83F3C632B7E3F28003434A1 /* URLCache+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLCache+Extension.swift"; sourceTree = "<group>"; };
 		A83F3C652B7E8866003434A1 /* HistoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryManager.swift; sourceTree = "<group>"; };
 		A84162E02B4C304A00424395 /* BrowserTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserTab.swift; sourceTree = "<group>"; };
+		A84D16682C08420500D7384C /* WebviewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebviewManager.swift; sourceTree = "<group>"; };
 		A84F0ED82B7BB95000A1B831 /* BrowsedURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowsedURL.swift; sourceTree = "<group>"; };
 		A84F0EDA2B7BBA8800A1B831 /* URLVisit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLVisit.swift; sourceTree = "<group>"; };
 		A84F0EDC2B7BEB0800A1B831 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				A84F0EDC2B7BEB0800A1B831 /* PersistenceController.swift */,
 				A86058AF2B7D291F00902E78 /* FavIconHelper.swift */,
 				A83F3C652B7E8866003434A1 /* HistoryManager.swift */,
+				A84D16682C08420500D7384C /* WebviewManager.swift */,
 			);
 			path = Browzer;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 				A8E355AF2C0508DD001E6F29 /* StartPage.swift in Sources */,
 				A8765F272BEE10D800F89D89 /* macOS_TabListView.swift in Sources */,
 				A8720B362B4D973B00C65FB8 /* WebView.swift in Sources */,
+				A84D16692C08420500D7384C /* WebviewManager.swift in Sources */,
 				A8DCE1942B57D9E400D0B401 /* NSTextFieldExtension.swift in Sources */,
 				A83F3C642B7E3F28003434A1 /* URLCache+Extension.swift in Sources */,
 				A8A5D27E2B8B4B6A002FEB66 /* HistoryView.swift in Sources */,
